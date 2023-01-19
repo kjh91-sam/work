@@ -1,0 +1,2965 @@
+<style>
+  /* FOR TESTING */
+  /* * {
+    border: 1px dotted rgb(128, 128, 128);
+  } */
+  * {
+    /* to set all the paddings and margins manually */
+    margin: 0vw;
+    padding: 0vw;
+
+    /* default font setting */
+    font-family: Sofia Pro Soft;
+    /* transition: transform 300ms ease-in-out; */
+  }
+  /* html,
+  body { */
+  /* max-width: 100vw; */
+  /* height: 100%; */
+  /* overflow-x: hidden;
+        이 한 줄 때문에 모달 열었을 때 뒤에 스크롤됐음
+        height를 parent에 주는 문제가 아니었음*/
+  /* scroll-behavior: smooth; */
+  /* } */
+
+  /* body {
+    min-width: 320px;
+    min-height: 320px;
+  } */
+
+  /* to remove default a tag settings */
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  /* .compatibility-alert {
+    display: none;
+    background-color: #b3001bf6;
+    color: white;
+    font-weight: 700;
+    font-family: Sofia Pro Soft;
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+  @media (min-aspect-ratio: 25/9) {
+    .compatibility-alert {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #too-wide {
+      display: block;
+    }
+    #too-tight {
+      display: none;
+    }
+  }
+  @media (max-aspect-ratio: 9/25) {
+    .compatibility-alert {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #too-wide {
+      display: none;
+    }
+    #too-tight {
+      display: block;
+    }
+  } */
+
+  /* STYLE PRESETS */
+  .flex-centered {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .display-none {
+    display: none !important;
+  }
+  .display-unset {
+    display: unset !important;
+  }
+  .lazy-load__modal {
+    animation: loading-modal 1.7s infinite linear;
+    background: linear-gradient(
+      to right,
+      #eeeeee 10%,
+      #dddddd 18%,
+      #eeeeee 33%
+    );
+    background-size: 100% 100%;
+  }
+
+  /* COMMON STYLING */
+  .master-container a,
+  .master-container button {
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+  }
+  /* .master-container button:hover {
+    transform: scale(0.9);
+  } */
+  .master-container {
+    width: 100vw;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* ANIMATIONS */
+  @keyframes loading-modal {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 774px 0;
+    }
+  }
+  @keyframes fade-in {
+    0% {
+      opacity: 0%;
+    }
+    100% {
+      opacity: 100%;
+    }
+  }
+  @keyframes fade-out {
+    0% {
+      opacity: 100%;
+    }
+    100% {
+      opacity: 0%;
+    }
+  }
+  @keyframes floating {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(0, 20px);
+    }
+    100% {
+      transform: translate(0, 0px);
+    }
+  }
+  @keyframes appear-upward {
+    0% {
+      transform: translateY(10%);
+      opacity: 0%;
+    }
+    100% {
+      transform: translate(0);
+      opacity: 100%;
+    }
+  }
+  @keyframes appear-downward {
+    0% {
+      transform: translateY(-10%);
+      opacity: 0%;
+    }
+    100% {
+      transform: translate(0);
+      opacity: 100%;
+    }
+  }
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes growFtm {
+    from {
+      transform: scale(0);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  @keyframes attract {
+    0% {
+      transform: translateX(0) translateY(0);
+    }
+    17% {
+      transform: translateX(3px) translateY(3px);
+    }
+    34% {
+      transform: translateX(0) translateY(0);
+    }
+    51% {
+      transform: translateX(3px) translateY(3px);
+    }
+    68% {
+      transform: translateX(0) translateY(0);
+    }
+  }
+  /* /////////////////////////////////////////// */ /* /////////////////////////////////////////// */
+  /* /////////////////////////////////////////// */ /* /////////////////////////////////////////// */
+  /* CSS FOR <TESTIMONIALS LANDING PAGE> */
+
+  /* /////////////////////////////////////////// */ /* /////////////////////////////////////////// */
+  /* COMMON STYLING */
+  .landings {
+    max-width: 1208px;
+  }
+  .landings > article {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .landings header {
+    max-width: 900px;
+  }
+  .landings header .subtitle {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 22px;
+    font-family: Sofia Pro Soft;
+    color: #ec2544; /* Pivo Red */
+  }
+  .landings header .title {
+    font-family: Caros Soft;
+    font-weight: 700;
+    font-size: 46px;
+    line-height: 56px;
+    margin-bottom: 22px;
+    color: #333232; /* Pivo Dark Grey */
+  }
+  .landings header .description {
+    text-align: center;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 22px;
+    font-family: Sofia Pro Soft;
+    color: #4f4f4f; /* Gray 2 */
+  }
+  .landings footer {
+    margin: 50px;
+  }
+  .landings footer button {
+    width: 149px;
+    height: 48px;
+    background: #ec2544; /* Pivo Red */
+    border-radius: 100px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    color: #ffffff;
+  }
+  .landings footer button:hover {
+    transform: scale(0.9);
+    transition: transform 300ms ease-in-out;
+  }
+
+  /* /////////////////////////////////////////// */ /* /////////////////////////////////////////// */
+  /* SPECIFIC STYLING FOR EACH ARTICLES */
+  /* /////////////////////////////////////////// */
+  /* LANDING__gradient */
+  section.gradient {
+    width: 100vw;
+    min-width: 1500px;
+  }
+  section#gradient1 {
+    background: linear-gradient(
+      360deg,
+      #ffffff 0%,
+      #fa5b61 18.47%,
+      #f8da83 50.53%,
+      #d3f8f5 85.42%,
+      #f8feff 102.78%
+    );
+  }
+  section#gradient2 {
+    background: linear-gradient(
+      180deg,
+      rgba(205, 235, 233, 0.3) 0%,
+      rgba(205, 235, 233, 0) 100%
+    );
+  }
+
+  /* /////////////////////////////////////////// */
+  /* LANDING__banner */
+  #landing__banner {
+    width: 100%;
+    max-width: 1208px;
+    position: relative;
+    margin: 300px 0px 150px 0px;
+  }
+  #landing__banner > header {
+    text-align: left;
+    position: absolute;
+    left: 200px;
+    max-width: 544px;
+    animation: appear-downward 2s;
+  }
+  #landing__banner .description {
+    text-align: left;
+  }
+  #landing__banner > .body {
+    position: relative;
+    bottom: 70px;
+    left: 730px;
+  }
+  #landing__banner > .body > svg {
+    width: 417px;
+    height: 336px;
+    fill: none;
+  }
+  #landing__banner--bubbles {
+    z-index: -1;
+    opacity: 1;
+  }
+  #bubble1 {
+    animation: floating 2.4s infinite;
+  }
+  #bubble2 {
+    animation: floating 2.6s infinite;
+  }
+  #bubble3 {
+    animation: floating 2.8s infinite;
+  }
+  #bubble4 {
+    animation: floating 3s infinite;
+  }
+  #bubble5 {
+    animation: floating 3.2s infinite;
+  }
+  #landing__banner--nadia {
+    animation: floating 4s infinite;
+    position: absolute;
+    top: 0px;
+    width: 417px;
+    height: 336px;
+    background-image: url("https://cdn.shopify.com/s/files/1/2065/8833/files/nadia_F_05_3x_e633755f-1453-4a23-aa77-4d3b6aad9cdd.png?v=1623797646");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  /* /////////////////////////////////////////// */
+  /* LANDING__social */
+  #landing__social {
+    position: unset;
+    margin-top: 20px;
+    margin-bottom: 100px;
+  }
+  #landing__social > .body {
+    width: 1208px;
+    max-width: 100%;
+    height: 643.2px;
+    position: relative;
+    margin: 0px 100px;
+  }
+  .landing__social--photo {
+    cursor: pointer;
+    border-radius: 25px;
+    /* background-size: 100% 100%; */
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    opacity: 0;
+    transition: transform 400ms ease-out !important;
+  }
+  .landing__social--photo > svg {
+    position: absolute;
+    width: 20%;
+    top: 15px;
+    right: 15px;
+  }
+  /* 컨테이너와 뷰포트의 차이 가로116 세로847 */
+  #landing__social--photo1 {
+    width: 147px;
+    height: 147px;
+    /* left: 39px; */
+    /* top: 0px; */
+    left: 55px;
+    top: 20px;
+  }
+  #landing__social--photo2 {
+    width: 252px;
+    height: 252px;
+    /* left: 292px;
+    top: 55px; */
+    left: 300px;
+    top: 60px;
+  }
+  #landing__social--photo3 {
+    width: 254px;
+    height: 254px;
+    /* left: 656px;
+    top: 0; */
+    left: 645px;
+    top: 15px;
+  }
+  #landing__social--photo4 {
+    width: 145px;
+    height: 145px;
+    /* left: 1018px;
+    top: 138px; */
+    left: 1000px;
+    top: 145px;
+  }
+  #landing__social--photo5 {
+    width: 245px;
+    height: 256px;
+    /* left: 0;
+    top: 348px; */
+    left: 15px;
+    top: 340px;
+  }
+  #landing__social--photo6 {
+    width: 251px;
+    height: 251px;
+    /* left: 406px;
+    bottom: 0; */
+    left: 385px;
+    bottom: 10px;
+  }
+  #landing__social--photo7 {
+    width: 147px;
+    height: 147px;
+    /* left: 734px;
+    top: 329px; */
+    left: 730px;
+    top: 340px;
+  }
+  #landing__social--photo8 {
+    width: 251px;
+    height: 251px;
+    /* right: 0;
+    bottom: 0; */
+    right: 15px;
+    bottom: 0;
+  }
+  /* /////////////////////////////////////////// */
+  /* LANDING__testimonials */
+  /* .testimonial__quotation {
+    position: absolute;
+    top: -13px;
+    left: -13px;
+  } */
+  #landing__testimonials {
+    margin-top: 50px;
+  }
+  #landing__testimonials > header {
+    max-width: 862px;
+  }
+  #landing__testimonials > .body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 900px;
+    height: 602px;
+  }
+  .card__container--upper,
+  .card__container--lower {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+  .landing__testimonials--card {
+    opacity: 0;
+    /* width: 205px;
+    height: fit-content;
+    min-width: 202px; */
+    width: 202px;
+    height: 292px;
+    background: #ffffff;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.07);
+    border-radius: 6px;
+    /* margin: 10px; */
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* flex: 1; */
+    overflow: hidden;
+  }
+  .card__media-container {
+    flex: 1;
+    position: relative;
+  }
+  .card-thumbnail {
+    height: 160px;
+    background-size: 100% 100%;
+    position: relative;
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+  }
+  .card-thumbnail:hover {
+    opacity: 0.8;
+    cursor: pointer;
+    transition: opacity 300ms ease;
+  }
+  .card-thumbnail > .card-playbutton {
+    position: absolute;
+    /* width: 50px;
+    height: 50px;
+    right: 5px;
+    bottom: 5px; */
+    width: 32px;
+    height: 32px;
+    right: 10px;
+    bottom: 10px;
+  }
+  .card__para-container {
+    /* min-height: 161px; */
+    /* padding: 12px 18px; */
+    /* padding: 8px; */
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    /* flex: 1; */
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .card-testimonial {
+    position: relative;
+    width: 100%;
+    /* color: #616262;
+    margin-bottom: 5px;
+    min-height: 80px;
+    flex: 1; */
+  }
+  .card-testimonial > .card-testimonial__quotation {
+    /* position: absolute;
+    top: -5px;
+    left: -9px;
+    width: 10px;
+    height: auto;
+    max-width: 100%;
+    border: 0; */
+    position: absolute;
+    top: 7px;
+    left: 10px;
+    width: 12px;
+    height: 12px;
+  }
+  .card-testimonial > .card-testimonial__comment {
+    font-weight: 400;
+    /* font-size: 16px; */
+    font-size: 14px;
+
+    color: #616262; /* Pivo Logo Grey */
+    text-align: left;
+
+    /* font-family: SofiaProSoftRegular; */
+    font-family: Sofia Pro Soft;
+    font-style: normal;
+
+    /* line-height: 1.625; */
+    line-height: 17px;
+
+    position: absolute;
+    top: 20px;
+    left: 22px;
+
+    width: 170px;
+  }
+  .card-namecard {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+    right: 15px;
+
+    display: flex;
+    flex-direction: column;
+  }
+  .card-namecard__name {
+    font-weight: 500;
+    font-family: Sofia Pro Soft;
+    font-size: 16px;
+    line-height: 16px;
+    /* line-height: 26px; */
+    color: #ec2544; /* Pivo Red */
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .card-namecard__occupation {
+    font-family: Sofia Pro Soft;
+    font-weight: 300;
+    font-size: 16px;
+    /* line-height: 26px; */
+    color: #959797; /* Pivo Light Grey */
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* /////////////////////////////////////////// */
+  /* LANDING__tutorials */
+  #landing__tutorials {
+    margin-top: 32px;
+  }
+  #landing__tutorials > .body {
+    margin-top: 32px;
+    max-width: 900px;
+    height: 350px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  .landing__tutorials--card {
+    border-radius: 9px;
+    opacity: 0;
+    width: 274px;
+    height: 154px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .landing__tutorials--card:hover {
+    /* animation: unset; */
+    opacity: 0.7 !important;
+    cursor: pointer;
+    transition: opacity 300ms ease;
+  }
+  .tutorial-card__button {
+    width: 36px;
+    height: 36px;
+    background-color: transparent;
+  }
+  .tutorial-card__button > svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* /////////////////////////////////////////// */
+  /* LANDING__followus */
+  #landing__followus {
+    margin-top: 50px;
+  }
+  #landing__followus > header {
+    width: 92vw; /* calc(382vw * 100 / 417); */
+  }
+  #landing__followus > .body {
+    position: relative;
+    width: 721px;
+    height: 132px;
+    margin-bottom: 100px;
+  }
+  #followus-bubbles-left {
+    position: absolute;
+    left: 0px;
+    top: 22px;
+  }
+  #followus-bubbles-right {
+    position: absolute;
+    right: 0px;
+    top: 22px;
+  }
+  #followus-icons {
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 181px; /* calc(721px / 2 - 359px / 2); */
+  }
+  #followus-icons a:hover {
+    animation: attract 1500ms infinite;
+  }
+
+  /* /////////////////////////////////////////// */
+  /* Modal Common Styling */
+  #landing__modals {
+    opacity: 0;
+    width: 100vw;
+    height: 100vh;
+    /* min-width: 1440px; */
+    padding: 0;
+    position: fixed;
+    top: 0px;
+    transition: opacity 500ms;
+    z-index: 100;
+  }
+  #landing__modals #modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(43, 43, 43, 0.9);
+  }
+  #landing__modals .modal {
+    width: 100%;
+    max-height: 722px;
+    transition: opacity 500ms;
+  }
+  #landing__modals .modal-card {
+    max-width: 774px;
+    max-height: 722px;
+    width: 100%;
+    height: 100%;
+    border-radius: 13px;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+  #landing__modals #modal__close-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 32px;
+    height: 32px;
+    /* margin-left: 332px; */
+    cursor: pointer;
+    z-index: 11;
+    opacity: 0.7;
+    transform: rotate(45deg);
+    transition: all 0.25s ease;
+  }
+  #landing__modals #modal__close-button::before {
+    width: 24px;
+    height: 2px;
+    margin: -1px 0 0 -12px;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    background: #fff;
+    transition: all 0.25s ease;
+  }
+  #landing__modals #modal__close-button::after {
+    width: 2px;
+    height: 24px;
+    margin: -12px 0 0 -1px;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    background: #fff;
+    transition: all 0.25s ease;
+  }
+  /* /////////////////////////////////////////// */
+  /* Modal Instagram Styling */
+  #instagram-modal {
+    width: 100%;
+    max-height: unset !important;
+    margin: auto;
+    padding: 5%;
+    overflow-y: auto;
+    display: flex;
+  }
+  #instagram-modal .modal-card {
+    position: relative;
+    margin: auto;
+    max-height: unset;
+    height: unset;
+  }
+  #instagram-modal #instagram-embed-0 {
+    width: 100% !important;
+    border: none !important;
+    border-radius: 13px !important;
+    margin: 0 !important;
+    max-width: unset !important;
+    min-width: unset !important;
+    transition: opacity 500ms ease-out !important;
+    transition: height 500ms ease-out !important;
+  }
+  /* /////////////////////////////////////////// */
+  /* Modal Testimonial Styling */
+
+  #testimonial-modal .modal-card {
+    overflow: auto;
+    width: 100vw;
+    height: 100vh;
+    max-width: 874px;
+    max-height: 722px;
+    position: absolute;
+    border-radius: 13px;
+    background: #fff;
+    /* top: 50%;
+    left: 50%;
+    bottom: unset;
+    right: unset;
+    margin: unset; */
+    /* transform: translate(-50%, -50%); */
+    padding-top: 60px;
+    padding-bottom: 0px;
+    display: flex;
+    flex-direction: column;
+  }
+  #testimonial-modal .modal__media-container {
+    width: 100%;
+    /* flex: 1; */
+    height: 494px;
+  }
+  #testimonial-modal .modal-video {
+    width: 100%;
+    height: 100%;
+  }
+  #testimonial-modal .modal-video iframe {
+    width: 100%;
+    height: 100%;
+  }
+  #testimonial-modal .modal__para-container {
+    padding: 30px 80px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  #testimonial-modal .modal-testimonial {
+    position: relative;
+    padding-bottom: 26px;
+  }
+  #testimonial-modal .modal-testimonial__quotation {
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    width: 12px;
+    height: 12px;
+  }
+  #testimonial-modal .modal-testimonial__comment {
+    font-size: 20px;
+    color: #616262;
+    position: relative;
+    font-family: Sofia Pro Soft;
+    font-weight: 400;
+  }
+  #testimonial-modal .modal-namecard__name {
+    color: #ec2544;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: Caros Soft;
+  }
+  #testimonial-modal .modal-namecard__occupation {
+    color: #959797;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 20px;
+    font-weight: 300;
+    font-family: Sofia Pro Soft;
+  }
+
+  /* /////////////////////////////////////////// */
+  /* Modal Tutorial Styling */
+  #tutorial-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #tutorial-modal .modal-card {
+    width: 774px;
+    height: 435px;
+    background-color: transparent;
+  }
+  #tutorial-modal iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 13px;
+  }
+
+  /* /////////////////////////////////////////// */ /* /////////////////////////////////////////// */
+  /* /////////////////////////////////////////// */ /* /////////////////////////////////////////// */
+  /* RESPONSIVE STYLING */
+
+  @media (max-width: 1250px) {
+    .master-container {
+      /* height: 3603px; 4152 * .868 */
+      height: 2819px; /* 3248 * .868 removing tutorials section */
+      overflow: hidden;
+    }
+    #landing__banner > .body {
+      left: 56%;
+    }
+    #landing__social > .body {
+      transform: scale(0.9);
+      margin-top: 3%;
+      margin-bottom: 5%;
+    }
+    .landings {
+      transform: scale(0.868) translateY(-50px);
+    }
+    .modal-card {
+      transform: scale(0.868);
+    }
+  }
+  @media (max-width: 1000px) {
+    .master-container {
+      /* height: 2886px; 4152 * .695 */
+      height: 2257px; /* 3248 * .695 removing tutorials section */
+    }
+    #landing__social > .body {
+      transform: scale(0.85);
+    }
+    .landings {
+      transform: scale(0.695) translateY(-30px);
+    }
+    .modal-card {
+      transform: scale(0.695);
+    }
+  }
+  @media (max-width: 750px) {
+    /* /////////////////////////////////////////// */ /* /////////////////////////////////////////// */
+    /* COMMON STYLING (max-width:750px) */
+    .master-container {
+      height: unset;
+    }
+    .landings {
+      /* zoom: 100%; */
+      transform: scale(1);
+      max-width: 750px;
+      width: 100%;
+    }
+    section.gradient {
+      width: 100vw;
+      min-width: unset;
+    }
+    .landings article {
+      padding-left: 0;
+      padding-right: 0;
+      padding-top: 18.4vw;
+      padding-bottom: 14.13vw;
+      margin-bottom: 0;
+      width: 100%;
+      position: relative;
+    }
+    .landings header,
+    .landings footer {
+      /* max-width: 82vw; calc(342vw * 100 / 417); */
+      max-width: unset;
+    }
+    .landings header {
+      padding-left: 3.73vw;
+      padding-right: 3.73vw;
+      margin-right: 2vw;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+    }
+    .landings header .subtitle {
+      font-size: 3.73vw;
+      line-height: 6.93vw;
+      margin-bottom: 16px;
+    }
+    .landings header .title {
+      font-size: 8vw;
+      line-height: 9.3vw;
+      margin-bottom: 16px;
+    }
+    .landings header .description {
+      font-size: 4.26vw;
+      line-height: 6.93vw;
+      text-align: left;
+      margin-bottom: 16px;
+    }
+    .landings header .description br {
+      display: none;
+    }
+    .landings .body {
+      width: 100%;
+    }
+    .landings footer {
+      margin: 7.2vw; /* calc(30vw * 100 / 417); */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 5vw;
+    }
+    .landings footer button {
+      width: 36vw; /* calc(149vw * 100 / 417); */
+      height: 11.5vw; /* calc(48vw * 100 / 417); */
+      font-size: 4vw; /* calc(16vw * 100 / 417); */
+      line-height: 4vw; /* calc(16vw * 100 / 417); */
+    }
+    /* /////////////////////////////////////////// */ /* /////////////////////////////////////////// */
+    /* SPECIFIC STYLING FOR EACH ARTICLES */
+
+    /* /////////////////////////////////////////// */
+    /* LANDING__banner (max-width:750px) */
+    #landing__banner {
+      width: 100vw;
+      margin: 0;
+      /* margin-top: 15vw; */
+      position: static;
+    }
+    #landing__banner > header {
+      position: unset;
+      left: unset;
+      top: unset;
+      /* width: 82vw; calc(342vw * 100 / 417); */
+      text-align: left;
+      max-width: unset;
+
+      width: 86vw;
+      padding-right: 0;
+      margin-right: 0;
+    }
+    #landing__banner > .body {
+      top: 3vw;
+      left: 0;
+      position: relative;
+      width: 100vw;
+    }
+    #landing__banner > .body > svg {
+      width: 100%;
+      height: 100%;
+      position: static;
+    }
+    #landing__banner--bubbles {
+      opacity: 0.2;
+    }
+    #landing__banner--nadia {
+      width: 100vw;
+      height: 100%;
+    }
+
+    /* /////////////////////////////////////////// */
+    /* LANDING__social (max-width:750px) */
+    #landing__social {
+      width: 100vw;
+      padding: 0;
+      margin: 0;
+      margin-top: 50px;
+      display: flex;
+      align-items: flex-start;
+    }
+    #landing__social > .header {
+      max-width: unset;
+    }
+    #landing__social > .body {
+      /* zoom: 100%; */
+      transform: scale(1);
+      width: 100vw;
+      height: 100%;
+      margin: 0px 0px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+    }
+    .landing__social--photo {
+      width: 43.5vw /* calc(182vw * 100 / 417) */ !important;
+      height: 43.5vw /* calc(182vw * 100 / 417) */ !important;
+      border-radius: 6vw; /* calc(25vw * 100 / 417); */
+      background-size: 100%;
+      position: static;
+      margin-bottom: 4.3vw; /* calc(18vw * 100 / 417); */
+    }
+    .landing__social--photo > svg {
+      width: 8vw;
+      position: relative;
+      top: 5%;
+      right: -75%;
+    }
+
+    /* /////////////////////////////////////////// */
+    /* LANDING__testimonials (max-width:750px) */
+    #landing__testimonials {
+      margin-top: 0;
+      padding-bottom: 0;
+    }
+    #landing__testimonials > .body {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      overflow-x: scroll;
+      padding-bottom: 10vw;
+
+      width: 100vw;
+      height: fit-content;
+    }
+    .card__container--upper,
+    .card__container--lower {
+      /* padding: calc(9vw * 100 / 417); */
+      width: fit-content;
+      padding-right: 4.3vw;
+    }
+    .landing__testimonials--card {
+      /* width: calc(202vw * 100 / 417);
+      height: calc(292vw * 100 / 417);
+      margin: calc(9vw * 100 / 417); */
+
+      /* width: 200px;
+      margin: 10px; */
+      width: 48.47vw;
+      height: 70vw;
+      margin: 4.3vw;
+      margin-bottom: 0;
+      margin-right: 0;
+    }
+    .card__media-container {
+      width: 100%;
+      height: 38.36vw;
+      flex: unset;
+    }
+    .card-thumbnail {
+      width: 100%;
+      height: 100%;
+    }
+    .card-thumbnail > .card-playbutton {
+      position: absolute;
+      width: 7.6vw;
+      height: 7.6vw;
+      right: 1vw;
+      bottom: 1vw;
+    }
+    .card__para-container {
+      /* min-height: 50%; */
+      width: 100%;
+      height: 31.64vw;
+    }
+    .card-testimonial {
+      height: 50%;
+    }
+    .card-testimonial > .card-testimonial__quotation {
+      width: 3vw;
+      height: 3vw;
+      position: absolute;
+      top: 2vw;
+      left: 2.3vw;
+    }
+    .card-testimonial > .card-testimonial__comment {
+      font-size: 3.3vw; /* 14px / 417 */
+      top: 5vw;
+      left: 5vw;
+      width: 40vw;
+      line-height: 5vw;
+    }
+    .card-namecard {
+      position: relative;
+      height: 50%;
+      bottom: unset;
+      left: unset;
+      right: unset;
+      justify-content: flex-end;
+      padding: 2.5vw;
+    }
+    .card-namecard > .card-namecard__name {
+      font-size: 3.3vw; /* 14px / 417 */
+      line-height: 5vw;
+    }
+    .card-namecard > .card-namecard__occupation {
+      font-size: 3.8vw; /* 16px / 417 */
+      line-height: 3.8vw;
+    }
+
+    /* /////////////////////////////////////////// */
+    /* LANDING__tutorials (max-width:750px) */
+    #landing__tutorials {
+      /* margin-top: calc(32vw * 100 / 417); */
+      margin-top: -7vw;
+      display: flex;
+      align-items: flex-start;
+    }
+    #landing__tutorials > .body {
+      width: 100vw;
+      height: fit-content;
+      padding-bottom: 5vw;
+      margin-top: 0;
+    }
+    .landing__tutorials--card {
+      width: 91vw; /* calc(379vw * 100 / 417); */
+      height: 51vw; /* calc(213vw * 100 / 417); */
+      margin: 5vw;
+      margin-bottom: 0;
+
+      /* font-size: calc(20vw * 100 / 417);
+      line-height: calc(26vw * 100 / 417); */
+      border-radius: 2.5vw; /* calc(10vw * 100 / 417); */
+    }
+    .tutorial-card__button {
+      width: 12.5vw; /* calc(52vw * 100 / 417); */
+      height: 12.5vw; /* calc(52vw * 100 / 417); */
+      /* left: calc(164vw * 100 / 417);
+      top: calc(81vw * 100 / 417); */
+    }
+    #landing__tutorials > footer {
+      width: 100vw;
+      padding-bottom: 0;
+    }
+    /* /////////////////////////////////////////// */
+    /* LANDING__followus (max-width:750px) */
+    #landing__followus {
+      padding: 0;
+      margin: 0;
+      margin-top: 10vw;
+    }
+    #landing__followus > header {
+      width: 91.5vw; /* calc(382vw * 100 / 417); */
+    }
+    #landing__followus > .body {
+      margin-bottom: 14.5vw; /* calc(60vw * 100 / 417); */
+      position: relative;
+      width: 74.5vw; /* calc(311vw * 100 / 417); */
+      height: 26.5vw; /* calc(111vw * 100 / 417); */
+    }
+    #followus-bubbles-left,
+    #followus-bubbles-right {
+      position: absolute;
+      width: 40vw; /* calc(167vw * 100 / 417); */
+      height: 18vw; /* calc(74vw * 100 / 417); */
+      top: 5.2vw;
+    }
+    #followus-icons {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+    }
+
+    /* /////////////////////////////////////////// */
+    /* LANDING__modal (max-width:750px) */
+    #landing__modals #modal__close-button {
+      top: 10px;
+      right: 10px;
+      width: 5vw;
+      height: 5vw;
+      z-index: 100000;
+    }
+    #landing__modals #modal__close-button::before {
+      background: var(--pivoLightGreyColor);
+    }
+    #landing__modals #modal__close-button::after {
+      background: var(--pivoLightGreyColor);
+    }
+    #landing__modals .modal-card {
+      /* max-height: 130vw;
+      top: unset;
+      bottom: unset;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: flex-start; */
+      transform: unset;
+    }
+    /* /////////////////////////////////////////// */
+    /* Modal Instagram Styling (max-width:750px) */
+    #instagram-modal {
+      /* transform: scale(1); */ /*이거쓰니까 백드랍 클릭 클로즈모달이 안된다*/
+      padding: 0;
+      padding-top: 10vw;
+      padding-bottom: 10vw;
+    }
+    #instagram-modal .modal-card {
+      flex-direction: unset;
+      width: 100vw;
+      height: fit-content;
+    }
+    /* /////////////////////////////////////////// */
+    /* Modal Testimonial Styling (max-width:750px) */
+    #testimonial-modal .modal-card {
+      width: 100vw;
+      height: 100vh;
+      max-height: 133.6vw;
+      padding-top: 20vw;
+      padding-bottom: 0;
+
+      justify-content: center;
+      align-items: flex-start;
+
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      margin: auto;
+    }
+    #testimonial-modal .modal__media-container {
+      width: 100vw;
+      height: 56.25vw;
+      min-height: 56.25vw;
+      flex: unset;
+    }
+    #testimonial-modal .modal-video {
+    }
+    #testimonial-modal .modal-video iframe {
+    }
+    #testimonial-modal .modal__para-container {
+      width: 100vw;
+      height: 100%;
+      padding-left: 10vw;
+      padding-right: 10vw;
+      padding-top: 10vw;
+      justify-content: space-between;
+    }
+    #testimonial-modal .modal-testimonial {
+      font-size: 4.2vw;
+      position: relative;
+      /* margin-bottom: 5px; */
+      /* min-height: 80px; */
+      /* flex: 1; */
+      width: 100%;
+      padding-right: 26vw;
+    }
+    #testimonial-modal .modal-testimonial__quotation {
+      position: absolute;
+      top: -3.2vw;
+      left: -3.2vw;
+      width: 3.2vw;
+      height: 3.2vw;
+    }
+    #testimonial-modal .modal-testimonial__comment {
+      font-size: 4.2vw;
+      font-weight: 400;
+      font-family: Sofia Pro Soft;
+      line-height: 5.8vw;
+      margin: 0;
+      min-height: unset;
+    }
+    #testimonial-modal .modal-namecard {
+    }
+    #testimonial-modal .modal-namecard__name {
+      font-size: 5.3vw;
+      font-family: Caros Soft;
+      font-weight: 700;
+    }
+    #testimonial-modal .modal-namecard__occupation {
+      font-size: 4.2vw;
+      font-family: Sofia Pro Soft;
+      font-weight: 300;
+    }
+    /* /////////////////////////////////////////// */
+    /* LANDING__tutorial--modal (max-width:750px) */
+    #tutorial-modal {
+      width: 100%;
+      height: 100%;
+    }
+    #tutorial-modal .modal-card {
+      width: 100vw;
+      height: 56.25vw;
+    }
+  }
+</style>
+
+<div class="master-container flex-centered">
+  <section id="landings" class="landings flex-centered">
+    <section id="gradient1" class="gradient flex-centered">
+      <article id="landing__banner">
+        <header class="header">
+          <h2 class="title">Get inspired to get creative!</h2>
+          <p class="description">
+            We believe anyone can create stand-out content. Have a look below at
+            how our users are creating with their Pivo for all the tips & tricks
+            you need to get started!
+          </p>
+        </header>
+        <section class="body">
+          <svg aria-hidden id="landing__banner--bubbles" viewBox="0 0 417 336">
+            <circle
+              id="bubble1"
+              class="bubble"
+              cx="393"
+              cy="63"
+              r="20"
+              fill="white"
+            />
+            <ellipse
+              id="bubble2"
+              class="bubble"
+              cx="80.5"
+              cy="203"
+              rx="25.5"
+              ry="26"
+              fill="white"
+            />
+            <path
+              id="bubble3"
+              class="bubble"
+              d="M70 36.5C70 56.1325 54.5278 72 35.5 72C16.4722 72 1 56.1325 1 36.5C1 16.8675 16.4722 1 35.5 1C54.5278 1 70 16.8675 70 36.5Z"
+              stroke="white"
+              stroke-width="2"
+            />
+            <path
+              id="bubble4"
+              class="bubble"
+              d="M415.5 228.5C415.5 251.178 397.558 269.5 375.5 269.5C353.442 269.5 335.5 251.178 335.5 228.5C335.5 205.822 353.442 187.5 375.5 187.5C397.558 187.5 415.5 205.822 415.5 228.5Z"
+              stroke="white"
+              stroke-width="3"
+            />
+            <circle
+              id="bubble5"
+              class="bubble"
+              cx="320.5"
+              cy="122.5"
+              r="9.5"
+              fill="white"
+            />
+          </svg>
+          <div id="landing__banner--nadia"></div>
+        </section>
+      </article>
+      <article id="landing__social" class="flex-centered">
+        <header class="header flex-centered">
+          <h3 class="subtitle">COMMUNITY</h3>
+          <h2 class="title">Our tagged photos</h2>
+          <p class="description">
+            The Pivo community is growing and so is all the amazing content
+            created with Pivo. <br />Join us and share your creations with the
+            world!
+          </p>
+        </header>
+        <section class="body lazy_action lozadT__social">
+          {%- comment -%}
+          {% for i in (1..4) %}
+          <div
+            id="{{ 'landing__social--photo' | append: i }}"
+            class="landing__social--photo"
+          ></div>
+          {% endfor %} {% for i in (5..8) %}
+          <div
+            id="{{ 'landing__social--photo' | append: i }}"
+            class="landing__social--photo"
+          >
+            <svg
+              aria-hidden
+              xmlns="http://www.w3.org/2000/svg"
+              width="37"
+              height="26"
+              viewBox="0 0 37 26"
+              fill="none"
+            >
+              <g opacity="0.8">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M4.90909 0.0454102C2.69995 0.0454102 0.909088 1.83627 0.909088 4.04541V21.409C0.909088 23.6182 2.69995 25.409 4.90909 25.409H22.2727C24.4819 25.409 26.2727 23.6182 26.2727 21.409V4.04541C26.2727 1.83627 24.4819 0.0454102 22.2727 0.0454102H4.90909ZM13.5909 21.1818C18.2602 21.1818 22.0455 17.3966 22.0455 12.7272C22.0455 8.05793 18.2602 4.2727 13.5909 4.2727C8.92159 4.2727 5.13636 8.05793 5.13636 12.7272C5.13636 17.3966 8.92159 21.1818 13.5909 21.1818Z"
+                  fill="white"
+                />
+                <circle cx="13.5909" cy="12.7272" r="5.63636" fill="white" />
+                <path
+                  d="M27.6818 7.70889C27.6818 7.33012 27.8958 6.98386 28.2346 6.81447L34.6892 3.58719C35.3541 3.25474 36.1364 3.73824 36.1364 4.48162V20.9728C36.1364 21.7162 35.3541 22.1997 34.6892 21.8673L28.2346 18.64C27.8958 18.4706 27.6818 18.1243 27.6818 17.7456V7.70889Z"
+                  fill="white"
+                />
+              </g>
+            </svg>
+          </div>
+          {% endfor %}
+          {%- endcomment -%}
+          {% for i in (1..8) %}
+          <div
+            id="{{ 'landing__social--photo' | append: i }}"
+            class="landing__social--photo"
+          >
+          {% unless i == 1 or i == 3 or i == 7 %}
+            <svg
+              aria-hidden
+              xmlns="http://www.w3.org/2000/svg"
+              width="37"
+              height="26"
+              viewBox="0 0 37 26"
+              fill="none"
+            >
+              <g opacity="0.8">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M4.90909 0.0454102C2.69995 0.0454102 0.909088 1.83627 0.909088 4.04541V21.409C0.909088 23.6182 2.69995 25.409 4.90909 25.409H22.2727C24.4819 25.409 26.2727 23.6182 26.2727 21.409V4.04541C26.2727 1.83627 24.4819 0.0454102 22.2727 0.0454102H4.90909ZM13.5909 21.1818C18.2602 21.1818 22.0455 17.3966 22.0455 12.7272C22.0455 8.05793 18.2602 4.2727 13.5909 4.2727C8.92159 4.2727 5.13636 8.05793 5.13636 12.7272C5.13636 17.3966 8.92159 21.1818 13.5909 21.1818Z"
+                  fill="white"
+                />
+                <circle cx="13.5909" cy="12.7272" r="5.63636" fill="white" />
+                <path
+                  d="M27.6818 7.70889C27.6818 7.33012 27.8958 6.98386 28.2346 6.81447L34.6892 3.58719C35.3541 3.25474 36.1364 3.73824 36.1364 4.48162V20.9728C36.1364 21.7162 35.3541 22.1997 34.6892 21.8673L28.2346 18.64C27.8958 18.4706 27.6818 18.1243 27.6818 17.7456V7.70889Z"
+                  fill="white"
+                />
+              </g>
+            </svg>
+          {% endunless %}
+          </div>
+          {% endfor %}
+        </section>
+      </article>
+    </section>
+    <article id="landing__testimonials" class="flex-centered">
+      <header class="header flex-centered">
+        <h3 class="subtitle">PIVO STORIES</h3>
+        <h2 class="title">Customer testimonials</h2>
+        <p class="description">
+          Say hello to our awesome Pivo Ambassadors! <br />Check out how Pivo
+          has helped them elevate their content creation to the next level!
+        </p>
+      </header>
+      <section class="body lazy_action lozadT__testimonial">
+        <div class="card__container--upper">
+          {% for i in (1..4) %}
+          <div
+            id="{{ 'landing__testimonials--card' | append: i }}"
+            class="landing__testimonials--card"
+          >
+            <div class="card__media-container">
+              <div
+                id="{{ 'card-thumbnail' | append: i }}"
+                class="card-thumbnail"
+              >
+                <svg
+                  class="card-playbutton"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                >
+                  <rect
+                    opacity="0.4"
+                    width="32"
+                    height="32"
+                    rx="16"
+                    fill="#201D1D"
+                  />
+                  <path
+                    d="M12 11L20 16L12 21V11Z"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="card__para-container">
+              <div class="card-testimonial">
+                <svg
+                  aria-hidden
+                  class="testimonial__quotation card-testimonial__quotation"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="13"
+                  height="12"
+                  viewBox="0 0 13 12"
+                  fill="none"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12.9172 2.44279C11.0903 3.37293 10.1769 4.46582 10.1769 5.7215C10.9556 5.81451 11.5995 6.14393 12.1086 6.70976C12.6177 7.2756 12.8723 7.93056 12.8723 8.67467C12.8723 9.46528 12.6252 10.1319 12.131 10.6744C11.6369 11.217 11.0155 11.4883 10.2667 11.4883C9.42814 11.4883 8.70189 11.1356 8.08793 10.4303C7.47397 9.72493 7.167 8.86845 7.167 7.8608C7.167 4.83786 8.7992 2.4738 12.0637 0.768555L12.9172 2.44279ZM6.47 2.44279C4.62813 3.37293 3.7072 4.46582 3.7072 5.7215C4.50086 5.81451 5.15224 6.14393 5.66138 6.70976C6.17051 7.2756 6.42508 7.93056 6.42508 8.67467C6.42508 9.46528 6.17426 10.1319 5.67261 10.6744C5.17096 11.217 4.54578 11.4883 3.79705 11.4883C2.95847 11.4883 2.23596 11.1356 1.62949 10.4303C1.02302 9.72493 0.719788 8.86845 0.719788 7.8608C0.719788 4.83786 2.34451 2.4738 5.59399 0.768555L6.47 2.44279Z"
+                    fill="#82CEC9"
+                  />
+                </svg>
+                <p class="card-testimonial__comment"></p>
+              </div>
+              <div class="card-namecard">
+                <p class="card-namecard__name"></p>
+                <p class="card-namecard__occupation"></p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="card__container--lower">
+          {% for i in (5..8) %}
+          <div
+            id="{{ 'landing__testimonials--card' | append: i }}"
+            class="landing__testimonials--card"
+          >
+            <div class="card__media-container">
+              <div
+                id="{{ 'card-thumbnail' | append: i }}"
+                class="card-thumbnail"
+              >
+                <svg
+                  aria-hidden
+                  class="card-playbutton"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                >
+                  <rect
+                    opacity="0.4"
+                    width="32"
+                    height="32"
+                    rx="16"
+                    fill="#201D1D"
+                  />
+                  <path
+                    d="M12 11L20 16L12 21V11Z"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="card__para-container">
+              <div class="card-testimonial">
+                <svg
+                  aria-hidden
+                  class="card-testimonial__quotation"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="13"
+                  height="12"
+                  viewBox="0 0 13 12"
+                  fill="none"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12.9172 2.44279C11.0903 3.37293 10.1769 4.46582 10.1769 5.7215C10.9556 5.81451 11.5995 6.14393 12.1086 6.70976C12.6177 7.2756 12.8723 7.93056 12.8723 8.67467C12.8723 9.46528 12.6252 10.1319 12.131 10.6744C11.6369 11.217 11.0155 11.4883 10.2667 11.4883C9.42814 11.4883 8.70189 11.1356 8.08793 10.4303C7.47397 9.72493 7.167 8.86845 7.167 7.8608C7.167 4.83786 8.7992 2.4738 12.0637 0.768555L12.9172 2.44279ZM6.47 2.44279C4.62813 3.37293 3.7072 4.46582 3.7072 5.7215C4.50086 5.81451 5.15224 6.14393 5.66138 6.70976C6.17051 7.2756 6.42508 7.93056 6.42508 8.67467C6.42508 9.46528 6.17426 10.1319 5.67261 10.6744C5.17096 11.217 4.54578 11.4883 3.79705 11.4883C2.95847 11.4883 2.23596 11.1356 1.62949 10.4303C1.02302 9.72493 0.719788 8.86845 0.719788 7.8608C0.719788 4.83786 2.34451 2.4738 5.59399 0.768555L6.47 2.44279Z"
+                    fill="#82CEC9"
+                  />
+                </svg>
+                <p class="card-testimonial__comment"></p>
+              </div>
+              <div class="card-namecard">
+                <p class="card-namecard__name"></p>
+                <p class="card-namecard__occupation"></p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+      <footer class="footer flex-centered">
+        <button>
+          <a
+            aria-label="link to youtube page with more Pivo testimonials"
+            target="_blank"
+            href="https://www.youtube.com/playlist?list=PL3N2vO32wUkGwQ4J5DQNQfS0apQApykTC"
+            >See more</a
+          >
+        </button>
+      </footer>
+    </article>
+    <section id="gradient2" class="gradient flex-centered">
+      {%- comment -%}
+      <article id="landing__tutorials" class="flex-centered">
+        <header class="header flex-centered">
+          <h3 class="subtitle">YOUTUBE</h3>
+          <h2 class="title">Pivo tutorials</h2>
+          <p class="description">
+            Get the inside tips & tricks on all things Pivo right from the
+            source.
+          </p>
+        </header>
+        <section class="body lazy_action lozadT__tutorial">
+          {% for i in (1..6) %}
+          <div
+            id="{{ 'landing__tutorials--card' | append: i }}"
+            class="landing__tutorials--card"
+          >
+            <!-- <p class="tutorial-card__description"></p>
+            <div class="tutorial-card__illust">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="241"
+                height="213"
+                viewBox="0 0 241 213"
+                fill="none"
+              >
+                <g opacity="0.2">
+                  <path
+                    d="M155.726 31.6001C146.693 31.6001 139.302 39.0728 139.302 48.2699C139.302 57.467 146.693 65.0218 155.726 65.0218C155.808 65.0218 155.89 65.0218 155.972 65.0218C187.916 66.4178 213.454 92.7774 213.454 125.05C213.454 158.307 186.52 185.241 153.262 185.241C120.826 185.241 94.4663 159.621 93.1524 127.513C93.1524 118.316 85.5976 110.761 76.4005 110.761C67.2034 110.761 59.6486 118.234 59.5665 127.513V127.595C59.5665 127.677 59.5665 127.759 59.5665 127.842C61.0446 178.262 102.185 218.663 152.934 218.663C204.586 218.663 246.547 176.783 246.547 125.132C246.63 74.3011 206.146 33.0782 155.726 31.6001Z"
+                    fill="white"
+                  />
+                  <path
+                    d="M0.0313721 124.721C0.0313721 207.085 65.5609 274.092 147.596 277.049C147.842 277.049 149.156 277.049 149.156 277.049C157.779 276.638 164.594 269.658 164.594 260.954C164.594 252.249 157.779 245.187 149.156 244.777V244.694C84.3658 242.642 32.4677 189.84 32.4677 124.885C32.4677 58.6989 86.5008 4.99418 153.098 4.99418C218.217 4.99418 271.1 56.3996 273.4 120.615C273.4 120.779 273.318 121.026 273.318 121.19C273.318 130.305 280.708 137.778 289.905 137.778C298.938 137.778 306.247 130.551 306.411 121.519C306.411 121.436 306.411 121.354 306.411 121.272C306.411 121.272 306.411 121.272 306.411 121.19C306.411 121.108 306.411 121.026 306.411 120.944C304.358 38.6622 236.693 -27.6064 153.344 -27.6064C68.6814 -27.6885 0.0313721 40.5509 0.0313721 124.721Z"
+                    fill="white"
+                  />
+                </g>
+              </svg>
+            </div> -->
+
+            <button class="tutorial-card__button">
+              <svg
+                aria-hidden
+                xmlns="http://www.w3.org/2000/svg"
+                width="52"
+                height="52"
+                viewBox="0 0 52 52"
+                fill="none"
+              >
+                <rect
+                  opacity="0.4"
+                  width="52"
+                  height="52"
+                  rx="26"
+                  fill="#201D1D"
+                />
+                <path
+                  d="M19.5 17.875L32.5 26L19.5 34.125V17.875Z"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+          {% endfor %}
+        </section>
+        <footer class="footer flex-centered">
+          <button>
+            <a
+              aria-label="link to youtube page with more Pivo tutorials"
+              target="_blank"
+              href="https://www.youtube.com/c/GetPivo/playlists"
+              >Watch now</a
+            >
+          </button>
+        </footer>
+      </article>
+      {%- endcomment -%}
+      <article id="landing__followus" class="flex-centered">
+        <header class="header flex-centered">
+          <h3 class="subtitle">STAY CONNECTED</h3>
+          <h2 class="title">Follow us</h2>
+        </header>
+        <section class="body">
+          <svg
+            aria-hidden
+            id="followus-bubbles-left"
+            width="201"
+            height="88"
+            viewBox="0 0 201 88"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle r="15" transform="matrix(-1 0 0 1 186 73)" fill="#EBEEEF" />
+            <circle r="15" transform="matrix(-1 0 0 1 106 15)" fill="#EBEEEF" />
+            <circle
+              r="9.5"
+              transform="matrix(-1 0 0 1 9.5 78.5)"
+              fill="#EBEEEF"
+            />
+          </svg>
+          <svg
+            aria-hidden
+            id="followus-bubbles-right"
+            width="201"
+            height="88"
+            viewBox="0 0 201 88"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="15" cy="73" r="15" fill="#EBEEEF" />
+            <circle cx="95" cy="15" r="15" fill="#EBEEEF" />
+            <circle cx="191.5" cy="78.5" r="9.5" fill="#EBEEEF" />
+          </svg>
+          <svg
+            aria-hidden
+            id="followus-icons"
+            width="364"
+            height="142"
+            viewBox="0 0 364 142"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <a
+              target="_blank"
+              href="https://www.youtube.com/channel/UCoCXxq9t76MCsihTdr7JR3Q"
+              aria-label="link to pivo youtube"
+            >
+              <circle cx="337.952" cy="30.8604" r="25.8604" fill="#FC0D1B" />
+              <path
+                d="M321.618 24.4573C321.771 22.1075 323.66 20.2661 326.012 20.1495C329.417 19.9808 334.285 19.7773 337.952 19.7773C341.62 19.7773 346.487 19.9808 349.893 20.1495C352.244 20.2661 354.134 22.1075 354.286 24.4573C354.432 26.7085 354.577 29.4785 354.577 31.652C354.577 33.8254 354.432 36.5955 354.286 38.8467C354.134 41.1964 352.244 43.0379 349.893 43.1544C346.487 43.3231 341.62 43.5266 337.952 43.5266C334.285 43.5266 329.417 43.3231 326.012 43.1544C323.66 43.0379 321.771 41.1964 321.618 38.8467C321.472 36.5955 321.328 33.8254 321.328 31.652C321.328 29.4785 321.472 26.7085 321.618 24.4573Z"
+                fill="white"
+              />
+              <path
+                d="M334.258 25.3191V38.2493L345.341 31.7842L334.258 25.3191Z"
+                fill="#FC0D1B"
+              />
+            </a>
+            <a
+              target="_blank"
+              href="https://www.linkedin.com/company/getpivo?trk=similar-companies_org_title"
+              aria-label="link to pivo linkedin"
+            >
+              <rect
+                x="236.127"
+                y="85"
+                width="51.7207"
+                height="51.7207"
+                rx="25.8604"
+                fill="#1275B1"
+              />
+              <path
+                d="M255.741 99.2087C255.741 100.935 254.245 102.334 252.399 102.334C250.553 102.334 249.057 100.935 249.057 99.2087C249.057 97.4824 250.553 96.083 252.399 96.083C254.245 96.083 255.741 97.4824 255.741 99.2087Z"
+                fill="white"
+              />
+              <path
+                d="M249.514 104.632H255.227V121.943H249.514V104.632Z"
+                fill="white"
+              />
+              <path
+                d="M264.425 104.632H258.712V121.943H264.425C264.425 121.943 264.425 116.493 264.425 113.086C264.425 111.041 265.123 108.986 267.91 108.986C271.059 108.986 271.04 111.663 271.025 113.737C271.006 116.447 271.052 119.213 271.052 121.943H276.765V112.807C276.716 106.973 275.196 104.285 270.195 104.285C267.225 104.285 265.384 105.633 264.425 106.853V104.632Z"
+                fill="white"
+              />
+            </a>
+            <a
+              target="_blank"
+              href="https://www.facebook.com/getpivo"
+              aria-label="link to pivo facebook"
+            >
+              <g filter="url(#filter0_d)">
+                <circle cx="30.8604" cy="30.8604" r="25.8604" fill="white" />
+              </g>
+              <path
+                d="M56.7207 30.8604C56.7207 16.5766 45.1441 5 30.8604 5C16.5766 5 5 16.5766 5 30.8604C5 43.7704 14.4552 54.4681 26.8197 56.4076V38.3356H20.2535V30.8604H26.8197V25.163C26.8197 18.6827 30.6786 15.1017 36.588 15.1017C39.4165 15.1017 42.3763 15.6068 42.3763 15.6068V21.9709H39.1135C35.9011 21.9709 34.901 23.966 34.901 26.0115V30.8604H42.0732L40.9267 38.3356H34.901V56.4076C47.2655 54.4681 56.7207 43.7704 56.7207 30.8604Z"
+                fill="#1877F2"
+              />
+              <path
+                d="M40.9267 38.3357L42.0732 30.8605H34.901V26.0116C34.901 23.9661 35.9011 21.971 39.1135 21.971H42.3763V15.6069C42.3763 15.6069 39.4165 15.1018 36.588 15.1018C30.6786 15.1018 26.8197 18.6828 26.8197 25.1631V30.8605H20.2535V38.3357H26.8197V56.4077C28.1379 56.6148 29.4865 56.7208 30.8604 56.7208C32.2342 56.7208 33.5828 56.6148 34.901 56.4077V38.3357H40.9267Z"
+                fill="white"
+              />
+            </a>
+            <a
+              target="_blank"
+              href="https://twitter.com/getpivo"
+              aria-label="link to pivo twitter"
+            >
+              <g filter="url(#filter1_d)">
+                <circle cx="186.023" cy="30.8604" r="25.8604" fill="#55ACEE" />
+              </g>
+              <path
+                d="M185.602 25.9957L185.665 27.0443L184.614 26.9159C180.788 26.4237 177.446 24.7545 174.608 21.951L173.221 20.56L172.863 21.5872C172.107 23.877 172.59 26.2953 174.167 27.9217C175.008 28.8206 174.818 28.949 173.368 28.414C172.863 28.2427 172.422 28.1143 172.38 28.1785C172.233 28.3283 172.737 30.2758 173.137 31.0462C173.683 32.1162 174.797 33.1649 176.017 33.7855L177.047 34.2777L175.827 34.2991C174.65 34.2991 174.608 34.3205 174.734 34.7699C175.155 36.1609 176.815 37.6376 178.665 38.2796L179.969 38.729L178.833 39.4138C177.152 40.3982 175.176 40.9547 173.2 40.9975C172.254 41.0189 171.476 41.1045 171.476 41.1687C171.476 41.3827 174.041 42.5811 175.533 43.0519C180.011 44.4429 185.329 43.8437 189.323 41.4683C192.161 39.7776 194.999 36.4177 196.323 33.1649C197.038 31.4314 197.753 28.2641 197.753 26.7447C197.753 25.7603 197.816 25.6319 198.993 24.4549C199.687 23.77 200.338 23.021 200.464 22.807C200.675 22.4004 200.654 22.4004 199.581 22.7642C197.795 23.4062 197.542 23.3206 198.425 22.3576C199.077 21.6728 199.855 20.4316 199.855 20.0678C199.855 20.0035 199.539 20.1106 199.182 20.3032C198.804 20.5172 197.963 20.8382 197.332 21.0308L196.197 21.3946L195.167 20.6884C194.599 20.3032 193.801 19.8751 193.38 19.7467C192.308 19.4471 190.668 19.4899 189.701 19.8323C187.074 20.7954 185.413 23.2778 185.602 25.9957Z"
+                fill="white"
+              />
+            </a>
+            <a
+              target="_blank"
+              aria-label="link to pivo instagram"
+              href="https://www.instagram.com/getpivo/"
+            >
+              <g filter="url(#filter2_d)">
+                <circle cx="109.713" cy="110.86" r="25.8604" fill="white" />
+              </g>
+              <g clip-path="url(#clip0)">
+                <mask
+                  id="mask0"
+                  mask-type="alpha"
+                  maskUnits="userSpaceOnUse"
+                  x="83"
+                  y="85"
+                  width="53"
+                  height="52"
+                >
+                  <circle cx="109.713" cy="110.86" r="25.8604" fill="white" />
+                </mask>
+                <g mask="url(#mask0)">
+                  <path
+                    d="M83.8816 102.348C83.8816 96.2116 83.8816 93.1435 85.0947 90.8081C86.117 88.8401 87.7217 87.2354 89.6897 86.2131C92.025 85 95.0932 85 101.23 85H118.254C124.391 85 127.459 85 129.794 86.2131C131.762 87.2354 133.367 88.8401 134.389 90.8081C135.602 93.1435 135.602 96.2116 135.602 102.348V119.373C135.602 125.509 135.602 128.577 134.389 130.913C133.367 132.881 131.762 134.485 129.794 135.508C127.459 136.721 124.391 136.721 118.254 136.721H101.23C95.0932 136.721 92.025 136.721 89.6897 135.508C87.7217 134.485 86.117 132.881 85.0947 130.913C83.8816 128.577 83.8816 125.509 83.8816 119.373V102.348Z"
+                    fill="url(#paint0_radial)"
+                  />
+                  <path
+                    d="M83.8816 102.348C83.8816 96.2116 83.8816 93.1435 85.0947 90.8081C86.117 88.8401 87.7217 87.2354 89.6897 86.2131C92.025 85 95.0932 85 101.23 85H118.254C124.391 85 127.459 85 129.794 86.2131C131.762 87.2354 133.367 88.8401 134.389 90.8081C135.602 93.1435 135.602 96.2116 135.602 102.348V119.373C135.602 125.509 135.602 128.577 134.389 130.913C133.367 132.881 131.762 134.485 129.794 135.508C127.459 136.721 124.391 136.721 118.254 136.721H101.23C95.0932 136.721 92.025 136.721 89.6897 135.508C87.7217 134.485 86.117 132.881 85.0947 130.913C83.8816 128.577 83.8816 125.509 83.8816 119.373V102.348Z"
+                    fill="url(#paint1_radial)"
+                  />
+                </g>
+                <path
+                  d="M109.714 92.053C104.606 92.053 103.965 92.0753 101.959 92.1666C99.9572 92.2583 98.5905 92.5753 97.3947 93.0404C96.1578 93.5208 95.1085 94.1633 94.0631 95.2091C93.017 96.2545 92.3744 97.3038 91.8925 98.5404C91.4262 99.7366 91.1089 101.104 91.0188 103.105C90.929 105.111 90.9055 105.753 90.9055 110.861C90.9055 115.968 90.9282 116.607 91.0191 118.614C91.1112 120.616 91.4282 121.982 91.8929 123.178C92.3736 124.415 93.0162 125.465 94.062 126.51C95.1069 127.556 96.1562 128.2 97.3924 128.681C98.5889 129.146 99.956 129.463 101.958 129.554C103.964 129.646 104.604 129.668 109.712 129.668C114.82 129.668 115.459 129.646 117.465 129.554C119.467 129.463 120.835 129.146 122.032 128.681C123.268 128.2 124.316 127.556 125.361 126.51C126.407 125.465 127.05 124.415 127.532 123.179C127.994 121.982 128.311 120.615 128.405 118.614C128.496 116.608 128.519 115.968 128.519 110.861C128.519 105.753 128.496 105.112 128.405 103.106C128.311 101.103 127.994 99.7366 127.532 98.5408C127.05 97.3038 126.407 96.2545 125.361 95.2091C124.315 94.1629 123.269 93.5204 122.031 93.0404C120.832 92.5753 119.464 92.2583 117.462 92.1666C115.456 92.0753 114.817 92.053 109.708 92.053H109.714ZM108.027 95.4423C108.528 95.4415 109.086 95.4423 109.714 95.4423C114.736 95.4423 115.331 95.4603 117.314 95.5504C119.147 95.6342 120.143 95.9407 120.805 96.1981C121.683 96.539 122.309 96.9465 122.967 97.6047C123.625 98.263 124.032 98.8899 124.374 99.7676C124.632 100.43 124.938 101.425 125.022 103.259C125.112 105.241 125.131 105.837 125.131 110.856C125.131 115.875 125.112 116.471 125.022 118.454C124.938 120.287 124.632 121.283 124.374 121.945C124.033 122.822 123.625 123.447 122.967 124.105C122.308 124.764 121.684 125.171 120.805 125.512C120.143 125.771 119.147 126.076 117.314 126.16C115.331 126.25 114.736 126.27 109.714 126.27C104.692 126.27 104.097 126.25 102.114 126.16C100.281 126.075 99.2856 125.769 98.6223 125.512C97.7446 125.171 97.1177 124.763 96.4595 124.105C95.8012 123.447 95.3937 122.821 95.0521 121.943C94.7946 121.281 94.4879 120.286 94.4044 118.452C94.3143 116.469 94.2963 115.874 94.2963 110.852C94.2963 105.829 94.3143 105.237 94.4044 103.254C94.4882 101.42 94.7946 100.425 95.0521 99.7621C95.3929 98.8844 95.8012 98.2575 96.4595 97.5992C97.1177 96.941 97.7446 96.5335 98.6223 96.1918C99.2852 95.9332 100.281 95.6276 102.114 95.5433C103.849 95.465 104.522 95.4415 108.027 95.4376V95.4423ZM119.753 98.5651C118.507 98.5651 117.496 99.5748 117.496 100.821C117.496 102.067 118.507 103.078 119.753 103.078C120.999 103.078 122.01 102.067 122.01 100.821C122.01 99.5752 120.999 98.5643 119.753 98.5643V98.5651ZM109.714 101.202C104.38 101.202 100.056 105.527 100.056 110.861C100.056 116.194 104.38 120.517 109.714 120.517C115.048 120.517 119.371 116.194 119.371 110.861C119.371 105.527 115.047 101.202 109.714 101.202H109.714ZM109.714 104.591C113.176 104.591 115.983 107.398 115.983 110.861C115.983 114.323 113.176 117.13 109.714 117.13C106.252 117.13 103.445 114.323 103.445 110.861C103.445 107.398 106.252 104.591 109.714 104.591Z"
+                  fill="white"
+                />
+              </g>
+            </a>
+            <defs>
+              <filter
+                id="filter0_d"
+                x="0"
+                y="0"
+                width="61.7207"
+                height="61.7207"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                />
+                <feOffset />
+                <feGaussianBlur stdDeviation="2.5" />
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0.529167 0 0 0 0 0.529167 0 0 0 0 0.529167 0 0 0 0.25 0"
+                />
+                <feBlend
+                  mode="normal"
+                  in2="BackgroundImageFix"
+                  result="effect1_dropShadow"
+                />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="effect1_dropShadow"
+                  result="shape"
+                />
+              </filter>
+              <filter
+                id="filter1_d"
+                x="155.162"
+                y="0"
+                width="61.7207"
+                height="61.7207"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                />
+                <feOffset />
+                <feGaussianBlur stdDeviation="2.5" />
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0.529167 0 0 0 0 0.529167 0 0 0 0 0.529167 0 0 0 0.25 0"
+                />
+                <feBlend
+                  mode="normal"
+                  in2="BackgroundImageFix"
+                  result="effect1_dropShadow"
+                />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="effect1_dropShadow"
+                  result="shape"
+                />
+              </filter>
+              <filter
+                id="filter2_d"
+                x="78.8529"
+                y="80"
+                width="61.7207"
+                height="61.7207"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                />
+                <feOffset />
+                <feGaussianBlur stdDeviation="2.5" />
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0.529167 0 0 0 0 0.529167 0 0 0 0 0.529167 0 0 0 0.25 0"
+                />
+                <feBlend
+                  mode="normal"
+                  in2="BackgroundImageFix"
+                  result="effect1_dropShadow"
+                />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="effect1_dropShadow"
+                  result="shape"
+                />
+              </filter>
+              <radialGradient
+                id="paint0_radial"
+                cx="0"
+                cy="0"
+                r="1"
+                gradientUnits="userSpaceOnUse"
+                gradientTransform="translate(97.62 140.704) rotate(-90) scale(51.2591 47.6749)"
+              >
+                <stop stop-color="#FFDD55" />
+                <stop offset="0.1" stop-color="#FFDD55" />
+                <stop offset="0.5" stop-color="#FF543E" />
+                <stop offset="1" stop-color="#C837AB" />
+              </radialGradient>
+              <radialGradient
+                id="paint1_radial"
+                cx="0"
+                cy="0"
+                r="1"
+                gradientUnits="userSpaceOnUse"
+                gradientTransform="translate(75.2181 88.7259) rotate(78.6806) scale(22.913 94.4484)"
+              >
+                <stop stop-color="#3771C8" />
+                <stop offset="0.128" stop-color="#3771C8" />
+                <stop offset="1" stop-color="#6600FF" stop-opacity="0" />
+              </radialGradient>
+              <clipPath id="clip0">
+                <rect
+                  width="51.7207"
+                  height="51.7207"
+                  fill="white"
+                  transform="translate(83.8529 85)"
+                />
+              </clipPath>
+            </defs>
+          </svg>
+        </section>
+      </article>
+    </section>
+  </section>
+  <div id="landing__modals" class="modal-container flex-centered display-none">
+    <div id="modal-backdrop">
+      <div id="modal__close-button"></div>
+    </div>
+    <article id="instagram-modal" class="modal display-none">
+      <div class="modal-card">{% include 'instagram-embed' %}</div>
+    </article>
+    <article id="testimonial-modal" class="modal flex-centered display-none">
+      <div class="modal-card">
+        <div class="modal__media-container">
+          <div class="modal-video lazy-load__modal">
+            <iframe
+              class="display-none"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+        <div class="modal__para-container">
+          <div class="modal-testimonial">
+            <svg
+              aria-hidden
+              class="testimonial__quotation modal-testimonial__quotation"
+              xmlns="http://www.w3.org/2000/svg"
+              width="13"
+              height="12"
+              viewBox="0 0 13 12"
+              fill="none"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M12.9172 2.44279C11.0903 3.37293 10.1769 4.46582 10.1769 5.7215C10.9556 5.81451 11.5995 6.14393 12.1086 6.70976C12.6177 7.2756 12.8723 7.93056 12.8723 8.67467C12.8723 9.46528 12.6252 10.1319 12.131 10.6744C11.6369 11.217 11.0155 11.4883 10.2667 11.4883C9.42814 11.4883 8.70189 11.1356 8.08793 10.4303C7.47397 9.72493 7.167 8.86845 7.167 7.8608C7.167 4.83786 8.7992 2.4738 12.0637 0.768555L12.9172 2.44279ZM6.47 2.44279C4.62813 3.37293 3.7072 4.46582 3.7072 5.7215C4.50086 5.81451 5.15224 6.14393 5.66138 6.70976C6.17051 7.2756 6.42508 7.93056 6.42508 8.67467C6.42508 9.46528 6.17426 10.1319 5.67261 10.6744C5.17096 11.217 4.54578 11.4883 3.79705 11.4883C2.95847 11.4883 2.23596 11.1356 1.62949 10.4303C1.02302 9.72493 0.719788 8.86845 0.719788 7.8608C0.719788 4.83786 2.34451 2.4738 5.59399 0.768555L6.47 2.44279Z"
+                fill="#82CEC9"
+              />
+            </svg>
+            <p class="modal-testimonial__comment"></p>
+          </div>
+          <div class="modal-namecard">
+            <p class="modal-namecard__name"></p>
+            <p class="modal-namecard__occupation"></p>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article id="tutorial-modal" class="modal flex-centered display-none">
+      <div class="modal-card">
+        <iframe
+          class="display-none"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </article>
+  </div>
+</div>
+
+<!-- FOR DEPLOY ONLY-->
+<script type="text/javascript">
+  console.log = () => {};
+</script>
+<!-- FOR DEPLOY ONLY -->
+
+<script>
+  ////////////////////////////////////////////////////////////////////
+  ////////////////////////DATA TO BE LOADED///////////////////////////
+  ////////////////////////////////////////////////////////////////////
+  // const photoPlaceholderPostId = "CQTfPkLs6sy";
+  const photoPlaceholderPostId = "PLACEHOLDER";
+  let photoCurrentPostId = "";
+
+  const photosInfo = [
+    {
+      id: "landing__social--photo1",
+      postId: "CGST4NKFh42",
+      "aria-label":
+        "tiny planet image with sea, lighthouse, and sky. Following photos will open an instagram post pop-up.",
+      thumbnail: "https://cdn.shopify.com/s/files/1/2065/8833/files/landing__social--photo1_8640da14-1ca1-406d-aa28-770e25327ce4.png?v=1623806310",
+      href: "https://www.instagram.com/p/CGST4NKFh42/?utm_medium=copy_link",
+      "animation-delay": "1200ms",
+      highlighting: [
+        1.6,
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+      ],
+    },
+    // {
+    //   id: "landing__social--photo2",
+    //   postId: "CNRGIMYp7iz",
+    //   "aria-label": "a woman with her bicycle in a sunny day",
+    //   thumbnail:
+    //     "https://cdn.shopify.com/s/files/1/2065/8833/files/landing__social--photo2_92386197-9f71-424d-b626-44a644144014.png?v=1623806310",
+    //   href: "https://www.instagram.com/p/CNRGIMYp7iz/?utm_medium=copy_link",
+    //   "animation-delay": "0ms",
+    //   highlighting: [
+    //     [0, 0, 0],
+    //     1.2,
+    //     [0, 0, 0],
+    //     [0, 0, 0],
+    //     [0, 0, 0],
+    //     [0, 0, 0],
+    //     [0, 0, 0],
+    //     [0, 0, 0],
+    //   ],
+    // },
+    {
+      id: "landing__social--photo2",
+      postId: "B6D5ENVpY9z",
+      "aria-label": "women doing ballet in the practice room",
+      thumbnail: "https://cdn.shopify.com/s/files/1/2065/8833/files/landing__social--photo2-min.jpg?v=1638863099",
+      href: "https://www.instagram.com/p/B6D5ENVpY9z/",
+      "animation-delay": "0ms",
+      highlighting: [
+        [0, 0, 0],
+        1.2,
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+      ],
+    },
+    {
+      id: "landing__social--photo3",
+      postId: "B7XdsnWn3Jp",
+      "aria-label": "tiny planet image with river, pebbles, forest, and sky",
+      thumbnail:
+        "https://cdn.shopify.com/s/files/1/2065/8833/files/landing__social--photo3_5c977b03-2492-46d1-980b-09769e7a0c72.png?v=1623806311",
+      href: "https://www.instagram.com/p/B7XdsnWn3Jp/?utm_medium=co",
+      "animation-delay": "600ms",
+      highlighting: [
+        [0, 0, 0],
+        [0, 0, 0],
+        1.2,
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+      ],
+    },
+    {
+      id: "landing__social--photo4",
+      postId: "CNc8xUsg5uU",
+      "aria-label": "a woman roller-skating on the road",
+      thumbnail:
+        "https://cdn.shopify.com/s/files/1/2065/8833/files/landing__social--photo4_dfcf406c-2180-4c03-a577-8b19537ec991.png?v=1623806310",
+      href: "https://www.instagram.com/reel/CNc8xUsg5uU/?utm_medium=copy_link",
+      "animation-delay": "700ms",
+      highlighting: [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        1.6,
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+      ],
+    },
+    {
+      id: "landing__social--photo5",
+      postId: "CPLvz-xjOUn",
+      "aria-label": "a woman fiercely dancing in front of a pool",
+      thumbnail: "https://cdn.shopify.com/s/files/1/2065/8833/files/landing__social--photo5_69b0b194-72a4-40b7-848e-19c7be65e66f.png?v=1623806311",
+      href: "https://www.instagram.com/p/CPLvz-xjOUn/",
+      "animation-delay": "1100ms",
+      highlighting: [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        1.2,
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+      ],
+    },
+    {
+      id: "landing__social--photo6",
+      postId: "CQImls1HjBD",
+      "aria-label": "a woman riding her brown horse",
+      thumbnail: "https://cdn.shopify.com/s/files/1/2065/8833/files/landing__social--photo6_b7ddbe9f-ad0a-4eb5-ae00-3db94b3168d2.png?v=1623806310",
+      href: "https://www.instagram.com/p/CQImls1HjBD/?utm_medium=copy_link",
+      "animation-delay": "300ms",
+      highlighting: [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        1.2,
+        [0, 0, 0],
+        [0, 0, 0],
+      ],
+    },
+    // {
+    //   id: "landing__social--photo7",
+    //   postId: "CPS55VoFDTl",
+    //   "aria-label":
+    //     "50/50 image video thumbnail of woman doing yoga on the left and sitting straight on the right",
+    //   thumbnail:
+    //     "https://cdn.shopify.com/s/files/1/2065/8833/files/landing__social--photo7_f979aef2-b1ce-4c57-b4d4-3bcc9dcc7452.png?v=1623806310",
+    //   href: "https://www.instagram.com/p/CPS55VoFDTl/?utm_medium=copy_link",
+    //   "animation-delay": "200ms",
+    //   highlighting: [
+    //     [0, 0, 0],
+    //     [0, 0, 0],
+    //     [0, 0, 0],
+    //     [0, 0, 0],
+    //     [0, 0, 0],
+    //     [0, 0, 0],
+    //     1.6,
+    //     [0, 0, 0],
+    //   ],
+    // },
+    {
+      id: "landing__social--photo7",
+      postId: "CNs4UNsMXqR",
+      "aria-label": "a woman doing yoga",
+      thumbnail: "https://cdn.shopify.com/s/files/1/2065/8833/files/landing__social--photo7-min.jpg?v=1638863099",
+      href: "https://www.instagram.com/p/CNs4UNsMXqR/",
+      "animation-delay": "200ms",
+      highlighting: [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        1.6,
+        [0, 0, 0],
+      ],
+    },
+            // "https://proxy.elfsightcdn.com/?url=https%3A%2F%2Finstagram.fdel27-1.fna.fbcdn.net%2Fv%2Ft51.2885-15%2Fe35%2Fs1080x1080%2F173118636_367176707878653_144037106475716040_n.jpg%3F_nc_ht%3Dinstagram.fdel27-1.fna.fbcdn.net%26_nc_cat%3D109%26_nc_ohc%3DH18pMxhIezAAX_pnxBN%26edm%3DAP_V10EBAAAA%26ccb%3D7-4%26oh%3D09741cd0b8a45e93053a34c6fc7fa3a3%26oe%3D61AD34D8%26_nc_sid%3D4f375e",
+    {
+      id: "landing__social--photo8",
+      postId: "CKD0_DVK4k0",
+      "aria-label": "a man roller skating in a cloudy day",
+      thumbnail:
+        "https://cdn.shopify.com/s/files/1/2065/8833/files/landing__social--photo8_51f0b457-f14c-4d89-aa49-d77f45787e6f.png?v=1623806310",
+      href: "https://www.instagram.com/p/CKD0_DVK4k0/?utm_medium=copy_link",
+      "animation-delay": "800ms",
+      highlighting: [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        1.2,
+      ],
+    },
+  ];
+  const testimonialsInfo = [
+    {
+      id: "landing__testimonials--card1",
+      "aria-label":
+        "a basketball player who's about to make a shoot. These cards will open a youtube video pop-up.",
+      thumbnail:
+        "https://cdn.shopify.com/s/files/1/2065/8833/files/card__media1_5cb2b6be-3176-41e6-8464-4ab0741f64f2.png?v=1623807363",
+      "embed-link": "https://www.youtube.com/embed/zSEEIJFTfN8",
+      typography: {
+        comment: "Pivo follows me around 360 degrees!",
+        name: "Lucius",
+        occupation: "Basketball Player",
+      },
+    },
+    {
+      id: "landing__testimonials--card2",
+      "aria-label": "two men staring down at me standing straight",
+      thumbnail:
+        "https://cdn.shopify.com/s/files/1/2065/8833/files/tm-gallery-04-min.jpg?v=1618990025",
+      "embed-link": "https://www.youtube.com/embed/EZbPAEWA37U",
+      typography: {
+        comment: "Pivo is simple like oreos.",
+        name: "Taylor & Nate",
+        occupation: "Content Creators",
+      },
+    },
+    {
+      id: "landing__testimonials--card3",
+      "aria-label": "a man with great muscles running forward",
+      thumbnail:
+        "https://cdn.shopify.com/s/files/1/2065/8833/files/tm-gallery-01-min.jpg?v=1618990025",
+      "embed-link": "https://www.youtube.com/embed/24SFgGdFsgo",
+      typography: {
+        comment: "Pivo makes my content stand out.",
+        name: "Preston",
+        occupation: "Fitness Trainer & Counselor",
+      },
+    },
+    {
+      id: "landing__testimonials--card4",
+      "aria-label": "a woman riding a horse in a meadow",
+      thumbnail:
+        "https://cdn.shopify.com/s/files/1/2065/8833/files/tm-gallery-03-min.jpg?v=1618990025",
+      "embed-link": "https://www.youtube.com/embed/Puq4YZ_RmJ4",
+      typography: {
+        comment: "Pivo is a great training tool to improve your riding.",
+        name: "Kaitlyn",
+        occupation: "Equestrian",
+      },
+    },
+    {
+      id: "landing__testimonials--card5",
+      "aria-label":
+        "a woman sitting down on a ground, tying her rollerskate shoelaces and smiling at me",
+      thumbnail:
+        "https://cdn.shopify.com/s/files/1/2065/8833/files/tm-gallery-05-mobile-min.jpg?v=1618990025",
+      "embed-link": "https://www.youtube.com/embed/pdcomt4AGLg",
+      typography: {
+        comment: "Pivo easily captures every moment.",
+        name: "Rubina",
+        occupation: "Roller Skater",
+      },
+    },
+    {
+      id: "landing__testimonials--card6",
+      "aria-label": "a woman standing amazingly on a running horse",
+      thumbnail:
+        "https://cdn.shopify.com/s/files/1/2065/8833/files/card__media6_3fd59d0e-20ae-44ba-939c-22c5d25c6a3e.png?v=1623807363",
+      "embed-link": "https://www.youtube.com/embed/djaQ1CSUof8",
+      typography: {
+        comment: "Pivo captures all the details.",
+        name: "Tamara",
+        occupation: "Equestrian",
+      },
+    },
+    {
+      id: "landing__testimonials--card7",
+      "aria-label": "a woman standing in front of a wall with red lightings",
+      thumbnail:
+        "https://cdn.shopify.com/s/files/1/2065/8833/files/tm-gallery-02-min.jpg?v=1618990025",
+      "embed-link": "https://www.youtube.com/embed/zFe7bzOtLVM",
+      typography: {
+        comment: "Pivo keeps my content dynamic.",
+        name: "Kelsie",
+        occupation: "Dancer",
+      },
+    },
+    {
+      id: "landing__testimonials--card8",
+      "aria-label":
+        "a pole dancer hanging from the ceiling, doing her choreography",
+      thumbnail:
+        "https://cdn.shopify.com/s/files/1/2065/8833/files/card__media8_965fcf5d-6384-4e06-a78c-50c64d2fd038.png?v=1623807363",
+      "embed-link": "https://www.youtube.com/embed/l3A_BOG_Qx4",
+      typography: {
+        comment: "Pivo has so many features and possibilities.",
+        name: "Aurelia",
+        occupation: "Pole Dancer",
+      },
+    },
+  ];
+  const tutorialsInfo = [
+    {
+      id: "landing__tutorials--card1",
+      title: "Getting Started with Pivo Smart Mount",
+      "video-src": "https://www.youtube.com/watch?v=1dt1knO9ZNQ",
+      thumbnail:
+        "https://cdn.shopify.com/s/files/1/2065/8833/files/tutorial2.jpg?v=1623889708",
+      "aria-label":
+        this.title +
+        ". These cards will open youtube videos about the subjects.",
+      "embed-link": "https://www.youtube.com/embed/1dt1knO9ZNQ",
+    },
+    {
+      id: "landing__tutorials--card2",
+      title: "Getting Started with Smart Capture",
+      "video-src": "https://www.youtube.com/watch?v=1aQ6FEvKSpA",
+      thumbnail:
+        "https://cdn.shopify.com/s/files/1/2065/8833/files/tutorial6.jpg?v=1623889708",
+      "aria-label": this.title,
+      "embed-link": "https://www.youtube.com/embed/1aQ6FEvKSpA",
+    },
+    {
+      id: "landing__tutorials--card3",
+      title: "Getting Started with Pivo Meet: Connect",
+      title: "How to Edit Your Magic Edge ",
+      "video-src": "https://www.youtube.com/watch?v=p2p7EbNWb9s",
+      thumbnail:
+        "https://cdn.shopify.com/s/files/1/2065/8833/files/tutorial5.jpg?v=1623889708",
+      "aria-label": this.title,
+      "embed-link": "https://www.youtube.com/embed/p2p7EbNWb9s",
+    },
+    {
+      id: "landing__tutorials--card4",
+      title: "Getting Started with Pivo Meet: Cast",
+      "video-src": "https://www.youtube.com/watch?v=P1aHZzqc09k",
+      thumbnail:
+        "https://cdn.shopify.com/s/files/1/2065/8833/files/tutorial4.jpg?v=1623889708",
+      "aria-label": this.title,
+      "embed-link": "https://www.youtube.com/embed/P1aHZzqc09k",
+    },
+    {
+      id: "landing__tutorials--card5",
+      "video-src": "https://www.youtube.com/watch?v=hjiRREG6Xpg",
+      thumbnail:
+        "https://cdn.shopify.com/s/files/1/2065/8833/files/tutorial3.jpg?v=1623889708",
+      "aria-label": this.title,
+      "embed-link": "https://www.youtube.com/embed/hjiRREG6Xpg",
+    },
+    {
+      id: "landing__tutorials--card6",
+
+      title: "Getting Started with Motion Timelapse",
+      "video-src": "https://www.youtube.com/watch?v=mRJmkv3RL2A",
+      thumbnail:
+        "https://cdn.shopify.com/s/files/1/2065/8833/files/tutorial1.jpg?v=1623888874",
+      "aria-label": this.title,
+      "embed-link": "https://www.youtube.com/embed/mRJmkv3RL2A",
+    },
+  ];
+
+  ////////////////////////////////////////////////////////////////////
+  //////////////////////////CUSTOM FUNCTIONS//////////////////////////
+  ////////////////////////////////////////////////////////////////////
+  const bring = (selector) => document.querySelector(selector);
+  const bringAll = (selector) => document.querySelectorAll(selector);
+  const bringFrom = (element, selector) => element.querySelector(selector);
+  const bringAllFrom = (element, selector) =>
+    element.querySelectorAll(selector);
+
+  const addClassTo = (element, className) => {
+    if (!element.classList) element.class = className;
+    else if (!element.classList.contains(className))
+      element.classList.add(className);
+    else console.log(className + " hasn't been added to ", element);
+  };
+  const addClassToAll = (elements, className) => {
+    elements.forEach((element) => addClassTo(element, className));
+  };
+  const removeClassFrom = (element, className) => {
+    if (element.classList && element.classList.contains(className)) {
+      element.classList.remove(className);
+      console.log(className + " has been removed from ", element);
+    }
+  };
+
+  const classIsIn = (element, className) => {
+    if (element.classList)
+      return Array.from(element.classList).includes(className);
+    else return false;
+  };
+  const classIsInAll = (elements, className) => {
+    for (let el of elements) {
+      if (classIsIn(el, className)) continue;
+      return false;
+    }
+    return true;
+  };
+
+  const addStyleTo = (element, styleName, styleValue) =>
+    (element.style[styleName] = styleValue);
+  const addStyleToAll = (elements, styleName, styleValue) =>
+    elements.forEach((el) => (el.style[styleName] = styleValue));
+
+  const addAnimationTo = (element, animationDescription) => {
+    element.style.animation = animationDescription;
+  };
+  const addAnimationToAll = (elements, animationDescription) => {
+    elements.forEach((element) => {
+      element.style.animation = animationDescription;
+    });
+  };
+
+  const makeDisplayNone = (element) => {
+    if (classIsIn(element, "display-unset"))
+      removeClassFrom(element, "display-unset");
+    else addClassTo(element, "display-none");
+  };
+  const makeDisplayUnset = (element) => {
+    if (classIsIn(element, "display-none"))
+      removeClassFrom(element, "display-none");
+    else addClassTo(element, "display-unset");
+  };
+
+  const getHeight = (element) => {
+    const rect = element.getBoundingClientRect();
+    return rect.height;
+  };
+  const getWidth = (element) => {
+    const rect = element.getBoundingClientRect();
+    return rect.width;
+  };
+
+  // ❤️ 😍 ❤️
+  const test = () => {
+    alert("test");
+  };
+
+  ////////////////////////////////////////////////////////////////////
+  ////////////////////////BRING DOM ELEMENTS//////////////////////////
+  ////////////////////////////////////////////////////////////////////
+  //----------elements: common
+  const html = bring("html");
+  const body = bring("body");
+  const masterContainer = bring(".master-container");
+  const landingsSection = bring("section.landings");
+
+  //----------elements: landing banner
+  const landingBanner = bring("#landing__banner");
+
+  //----------elements: landing social
+  const landingSocial = bring("#landing__social");
+  const landingSocialBody = bring("#landing__social > .body");
+  const landingSocialPhotos = bringAll(".landing__social--photo");
+
+  //----------elements: landing testimonial
+  const landingTestimonials = bring("#landing__testimonials");
+  const landingTestimonialsBody = bring("#landing__testimonials > .body");
+  const landingTestimonialsCards = bringAll(".landing__testimonials--card");
+
+  //----------elements: landing tutorial
+  const landingTutorials = bring("#landing__tutorials");
+  const landingTutorialsBody = bring("#landing__tutorials > .body");
+  const landingTutorialsCards = bringAll(".landing__tutorials--card");
+
+  //----------elements: landing follow us
+  const landingFollowus = bring("#landing__followus");
+
+  //----------elements: modal common
+  const modalContainer = bring("#landing__modals");
+  const modalBackdrop = bring("#modal-backdrop");
+  const modalCloseButton = bring("#modal__close-button");
+
+  //----------elements: instagram modal
+  const instagramModalContainer = bring("#instagram-modal");
+  const instagramModalCard = bringFrom(instagramModalContainer, ".modal-card");
+  let instagramModalIframe;
+  setTimeout(() => {
+    instagramModalIframe = bring("#instagram-embed-0");
+  }, 500);
+
+  //----------elements: testimonial modal
+  const testimonialModalContainer = bring("#testimonial-modal");
+  const testimonialModalCard = bringFrom(
+    testimonialModalContainer,
+    ".modal-card"
+  );
+  const testimonialModalVideoBox = bringFrom(
+    testimonialModalCard,
+    ".modal-video"
+  );
+  const testimonialModalIframe = bringFrom(testimonialModalVideoBox, "iframe");
+
+  //----------elements: tutorial modal
+  const tutorialModalContainer = bring("#tutorial-modal");
+  const tutorialModalCard = bringFrom(tutorialModalContainer, ".modal-card");
+  const tutorialModalIframe = bringFrom(tutorialModalCard, "iframe");
+
+  //----------fill elements and add event listeners
+  landingSocialPhotos.forEach((photo, i) => {
+    const info = photosInfo[i];
+    photo.dataset.src = `url('${info["thumbnail"]}')`;
+    photo["aria-label"] = info["aria-label"];
+    photo.addEventListener("click", () => {
+      openModal(i, "SOCIAL");
+    });
+  });
+  landingTestimonialsCards.forEach((card, i) => {
+    const info = testimonialsInfo[i];
+    const media = bringFrom(card, ".card-thumbnail");
+    media["aria-label"] = info["aria-label"];
+    media.dataset.src = `url('${info["thumbnail"]}')`;
+    bringFrom(card, ".card-testimonial__comment").innerHTML =
+      info.typography.comment;
+    bringFrom(card, ".card-namecard__name").innerHTML = info.typography.name;
+    bringFrom(card, ".card-namecard__occupation").innerHTML =
+      info.typography.occupation;
+    bringFrom(card, ".card__media-container").addEventListener("click", () => {
+      openModal(i, "TESTIMONIAL");
+    });
+  });
+  landingTutorialsCards.forEach((card, i) => {
+    const info = tutorialsInfo[i];
+    card.dataset.src = "url('" + info["thumbnail"] + "')";
+    card.style["background-size"] = "100% 100%";
+    card["aria-label"] = info["aria-label"];
+    card.addEventListener("click", () => {
+      openModal(i, "TUTORIAL");
+    });
+  });
+
+  ////////////////////////////////////////////////////////////////////
+  //////////////////FILL, OPEN, and CLOSE MODAL///////////////////////
+  ////////////////////////////////////////////////////////////////////
+
+  //----------fill modal
+  const fillSocialModalCard = (i) => {
+    photoCurrentPostId = photosInfo[i].postId;
+    instagramModalIframe.src = instagramModalIframe.src.replace(
+      photoPlaceholderPostId,
+      photoCurrentPostId
+    );
+    instagramModalIframe.onload = () => {
+      if (!instagramModalIframe.src.includes(photoPlaceholderPostId)) {
+        removeClassFrom(instagramModalCard, "lazy-load__modal");
+      }
+    };
+  };
+  const fillTestimonialModalCard = (i) => {
+    const mediaSrc = testimonialsInfo[i]["embed-link"];
+    const testimonial = testimonialsInfo[i]["typography"]["comment"];
+    const name = testimonialsInfo[i]["typography"]["name"];
+    const occupation = testimonialsInfo[i]["typography"]["occupation"];
+
+    testimonialModalIframe.src = mediaSrc;
+    bringFrom(
+      testimonialModalContainer,
+      ".modal-testimonial__comment"
+    ).innerHTML = testimonial;
+    bringFrom(testimonialModalContainer, ".modal-namecard__name").innerHTML =
+      name;
+    bringFrom(
+      testimonialModalContainer,
+      ".modal-namecard__occupation"
+    ).innerHTML = occupation;
+  };
+  const fillTutorialModalCard = (i) => {
+    tutorialModalIframe.src = tutorialsInfo[i]["embed-link"];
+  };
+
+  //----------open modal
+  const openModal = async (i, modalType) => {
+    addClassToAll([modalBackdrop, modalCloseButton], modalType);
+    if (modalType == "SOCIAL") {
+      if (!instagramModalIframe) {
+        console.log("fuck");
+        instagramModalIframe = bring("#instagram-embed-0");
+      }
+      makeDisplayUnset(instagramModalContainer);
+      await fillSocialModalCard(i);
+      setTimeout(() => {
+        addStyleTo(instagramModalContainer, "opacity", 1);
+      }, 500);
+    } else if (modalType == "TESTIMONIAL") {
+      addClassTo(testimonialModalVideoBox, "lazy-load__modal");
+      makeDisplayUnset(testimonialModalContainer);
+      await fillTestimonialModalCard(i);
+      setTimeout(() => {
+        addStyleTo(testimonialModalContainer, "opacity", 1);
+      }, 500);
+      makeDisplayNone(testimonialModalIframe);
+
+      testimonialModalIframe.addEventListener("load", () => {
+        removeClassFrom(testimonialModalVideoBox, "lazy-load__modal");
+        makeDisplayUnset(testimonialModalIframe);
+      });
+    } else {
+      //modalType=="TUTORIAL"
+      addClassTo(tutorialModalCard, "lazy-load__modal");
+      makeDisplayUnset(tutorialModalContainer);
+      await fillTutorialModalCard(i);
+      setTimeout(() => {
+        addStyleTo(tutorialModalContainer, "opacity", 1);
+      }, 500);
+      makeDisplayNone(tutorialModalIframe);
+
+      tutorialModalIframe.addEventListener("load", () => {
+        removeClassFrom(tutorialModalCard, "lazy-load__modal");
+        makeDisplayUnset(tutorialModalIframe);
+      });
+    }
+    makeDisplayUnset(modalContainer);
+    setTimeout(() => {
+      addStyleTo(modalContainer, "opacity", 1);
+    }, 0);
+    addStyleTo(body, "overflow-y", "hidden");
+    [modalBackdrop, modalCloseButton].forEach((el) => {
+      el.addEventListener("click", (e) => {
+        closeModal(modalType);
+      });
+    });
+  };
+
+  //----------close modal
+  const closeModal = (modalType) => {
+    if (modalType == "SOCIAL") {
+      container = instagramModalContainer;
+      instagramModalIframe.src = instagramModalIframe.src.replace(
+        photoCurrentPostId,
+        photoPlaceholderPostId
+      );
+    } else if (modalType == "TESTIMONIAL") {
+      container = testimonialModalContainer;
+      testimonialModalIframe.src = "";
+    } else {
+      //modalType=="TUTORIAL"
+      container = tutorialModalContainer;
+      tutorialModalIframe.src = "";
+    }
+    addStyleTo(container, "opacity", 0);
+    setTimeout(() => {
+      makeDisplayNone(container);
+    }, 500);
+    addStyleTo(modalContainer, "opacity", 0);
+    setTimeout(() => {
+      makeDisplayNone(modalContainer);
+    }, 500);
+    addStyleTo(body, "overflow-y", "scroll");
+    [modalBackdrop, modalCloseButton].forEach((el) => {
+      removeClassFrom(el, modalType);
+    });
+  };
+
+  ////////////////////////////////////////////////////////////////////
+  ////////////////////////INVIEW ANIMATION////////////////////////////
+  ///////////////////partly substituted by lozad//////////////////////
+  ////////////////////////////////////////////////////////////////////
+
+  //----------measure highlight x and y
+  const measureHighlighting = () => {
+    const socialRect = landingSocialBody.getBoundingClientRect();
+    // const boxWidth = socialRect.right - socialRect.left;
+    // const boxHeight = socialRect.bottom - socialRect.top;
+    const boxWidth = socialRect.width;
+    const boxHeight = socialRect.height;
+
+    landingSocialPhotos.forEach((from, i) => {
+      const fromRect = from.getBoundingClientRect();
+      const fromWidth =
+        (fromRect.right - fromRect.left) * photosInfo[i].highlighting[i];
+      const fromHeight =
+        (fromRect.bottom - fromRect.top) * photosInfo[i].highlighting[i];
+      const fromDiagonal = Math.sqrt(
+        Math.pow(fromWidth, 2) + Math.pow(fromHeight, 2)
+      );
+      landingSocialPhotos.forEach((to, j) => {
+        if (i != j) {
+          const toRect = to.getBoundingClientRect();
+          const toWidth =
+            (toRect.right - toRect.left) * photosInfo[j].highlighting[i][2];
+          const toHeight =
+            (toRect.bottom - toRect.top) * photosInfo[j].highlighting[i][2];
+          const toDiagonal = Math.sqrt(
+            Math.pow(toWidth, 2) + Math.pow(toHeight, 2)
+          );
+          const a = Math.floor(
+            (toRect.left + toRect.right) / 2 -
+              (fromRect.left + fromRect.right) / 2
+          );
+          const b = Math.floor(
+            (toRect.top + toRect.bottom) / 2 -
+              (fromRect.top + fromRect.bottom) / 2
+          );
+          const c = Math.floor(
+            Math.sqrt(Math.pow(Math.abs(a), 2) + Math.pow(Math.abs(b), 2))
+          );
+          if (c < fromDiagonal) {
+            photosInfo[i].highlighting[j] = [0.1 * a, 0.1 * b, 0.98];
+          } else if (c < fromDiagonal * 2) {
+            photosInfo[i].highlighting[j] = [
+              (0.1 * a) / 2,
+              (0.1 * b) / 2,
+              0.95,
+            ];
+          } else if (c < fromDiagonal * 3) {
+            photosInfo[i].highlighting[j] = [
+              (0.05 * a) / 3,
+              (0.05 * b) / 3,
+              0.92,
+            ];
+          } else {
+            photosInfo[i].highlighting[j] = [
+              (0.025 * a) / 4,
+              (0.025 * b) / 4,
+              0.89,
+            ];
+          }
+          // console.log(from, to, a, b, c, photosInfo[i].highlighting[j]);
+        }
+      });
+    });
+  };
+
+  //----------function to apply animation to specific photo
+  const animateByDistance = (i, j) => {
+    if (i != j) {
+      const from = landingSocialPhotos[i];
+      const to = landingSocialPhotos[j];
+      to.style.transform =
+        "translate(" +
+        photosInfo[i].highlighting[j][0] +
+        "px, " +
+        photosInfo[i].highlighting[j][1] +
+        "px) scale(" +
+        photosInfo[i].highlighting[j][2] +
+        ")";
+    }
+  };
+
+  //----------apply animation to all photos
+  const applyHighlighting = () => {
+    landingSocialPhotos.forEach((from, i) => {
+      if (from.style.animation) {
+        from.style.animation = "unset";
+        from.style.opacity = 1;
+      }
+      setTimeout(() => {
+        from.addEventListener(
+          "mouseenter",
+          (mouseEnterEvent = () => {
+            from.style.transform =
+              "scale(" + photosInfo[i].highlighting[i] + ")";
+            landingSocialPhotos.forEach((to, j) => {
+              animateByDistance(i, j);
+            });
+          })
+        );
+        from.addEventListener(
+          "mouseleave",
+          (mouseLeaveEvent = () => {
+            landingSocialPhotos.forEach((all) => {
+              all.style.transform = "unset";
+            });
+          })
+        );
+      }, 0);
+    });
+    const removeMouseoverEvent = () => {
+      if (window.innerWidth <= 750 && isInView(landingSocialBody)) {
+        landingSocialPhotos.forEach((photo) => {
+          photo.removeEventListener("mouseenter", mouseEnterEvent);
+          photo.removeEventListener("mouseleave", mouseLeaveEvent);
+        });
+      }
+    };
+    window.addEventListener("resize", removeMouseoverEvent);
+    window.addEventListener("orirentationChange", removeMouseoverEvent);
+  };
+
+  //----------events that should be listened to for isInView check
+  const inViewEvents = ["load", "scroll", "resize", "orientationChange"];
+
+  //----------check if an element is in viewport
+  const isInView = (el) => {
+    const wTop = window.scrollY || window.pageYOffset;
+    const wBottom = wTop + window.innerHeight;
+    const elTop = wTop + el.getBoundingClientRect().top;
+    const elBottom = wTop + el.getBoundingClientRect().bottom;
+    if (elBottom < wTop || elTop > wBottom) {
+      // console.log(
+      //   "for ",
+      //   el,
+      //   ", ",
+      //   elBottom,
+      //   " is less than ",
+      //   wTop,
+      //   " or ",
+      //   elTop,
+      //   " is greater than ",
+      //   wBottom
+      // );
+      return false;
+    } else return true;
+  };
+  const windowEventRemover = (listener) => {
+    console.log("<<<<" + listener + " for window has been removed.>>>>");
+    inViewEvents.forEach((e) => window.removeEventListener(e, listener));
+  };
+
+  //----------seperately apply listener to achieve better performance
+  const socialAnimationFlags = [0, 0, 0, 0, 0, 0, 0, 0];
+  const socialAnimationListener = () => {
+    if (window.innerWidth > 750 && isInView(landingSocialBody)) {
+      landingSocialPhotos.forEach((photo, i) => {
+        addAnimationTo(photo, "growFtm 1s forwards");
+        addStyleTo(photo, "animation-delay", photosInfo[i]["animation-delay"]);
+      });
+      measureHighlighting();
+      setTimeout(() => {
+        applyHighlighting();
+        windowEventRemover(socialAnimationListener);
+      }, 2000);
+    } else if (window.innerWidth <= 750) {
+      if (socialAnimationFlags.reduce((sum, flag) => (sum += flag), 0) == 8)
+        windowEventRemover(socialAnimationListener);
+      landingSocialPhotos.forEach((photo, i) => {
+        if (isInView(photo)) {
+          addAnimationTo(photo, "growFtm 1s forwards");
+          socialAnimationFlags[i] = 1;
+        }
+      });
+      const inCaseOfResizing = () => {
+        if (window.innerWidth > 750 && isInView(landingSocialBody))
+          applyHighlighting();
+      };
+      landingSocialBody.addEventListener("resize", inCaseOfResizing);
+      landingSocialBody.addEventListener(
+        "orirentationChange",
+        inCaseOfResizing
+      );
+    }
+  };
+  const testimonialsAnimationListener = () => {
+    if (isInView(landingTestimonialsBody)) {
+      landingTestimonialsCards.forEach((card, i) => {
+        addAnimationTo(card, "growFtm 1s forwards");
+        addStyleTo(card, "animation-delay", i * 100 + "ms");
+      });
+      windowEventRemover(testimonialsAnimationListener);
+    }
+  };
+  const tutorialsAnimationFlags = [0, 0, 0, 0, 0, 0];
+  const tutorialsAnimationListener = () => {
+    if (tutorialsAnimationFlags.reduce((sum, flag) => (sum += flag), 0) == 6)
+      windowEventRemover(tutorialsAnimationListener);
+    landingTutorialsCards.forEach((card, i) => {
+      if (isInView(card)) {
+        addAnimationTo(card, "appear-upward 1s forwards");
+        tutorialsAnimationFlags[i] = 1;
+      }
+    });
+  };
+
+  //----------apply in-view animations to window element
+  inViewEvents.forEach((e) =>
+    window.addEventListener(e, socialAnimationListener)
+  );
+  inViewEvents.forEach((e) =>
+    window.addEventListener(e, testimonialsAnimationListener)
+  );
+  inViewEvents.forEach((e) =>
+    window.addEventListener(e, tutorialsAnimationListener)
+  );
+
+  window.addEventListener("click", (e) => {
+    console.log(e.target);
+  });
+</script>
