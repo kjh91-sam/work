@@ -1,0 +1,25 @@
+.typography-shp-st{color:#616262!important}.shp-i-m-top{margin-top:16px!important}.wrapper{grid-template-rows:repeat(15,auto)!important}.shop-item-video-wrapper{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;z-index:1}.shop-item-video-wrapper video{width:100%;height:auto;transform:scale(1.01)}.shop-item-wrapper{z-index:3}.button-normal-ces{width:96px;height:46px;display:flex;align-items:center;justify-content:center;border-radius:100px;color:#fff;background-color:#ec2544;font-family:var(--default-font-family);font-size:16px;line-height:16px}.explore-products-card-btnBox{display:flex;justify-content:center;align-items:center}.ces-pod-section{padding-bottom:38px;margin-bottom:110px;background:#F6F6F6}.explore-products-container{padding-bottom:0}@media (min-width: 750px){.shop-item-wrapper[product-card=pivo-pod-black],.shop-item-wrapper[product-card=pivo-pod-black]+.shop-item-wrapper{width:50%}}@media (max-width: 750px){.explore-products-cardBox{justify-content:flex-start;padding:20px 0 0}.explore-products-card{max-width:210px;min-width:unset;margin:0}.explore-products-container{padding:25px 0 40px}.explore-products-card-title{margin-bottom:0!important}.ces-pod-section{margin-bottom:14.13vw}.explore-products-card-descBox{margin:0}.explore-products-card-btnBox{margin-top:15px}}.shop-item-wrapper[product-card=pivo-pod-gold]>*:not(.go-circ),.shop-item-wrapper[product-card=pivo-pod-black]>*:not(.go-circ){transform:translateY(13px)}
+/*# sourceMappingURL=/s/files/1/2065/8833/t/496/assets/collection-ces.css.map?v=152216927333348468551644990303 */
+
+/*
+     FILE ARCHIVED ON 00:25:09 May 04, 2022 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 06:12:31 Jan 19, 2023.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 650.67
+  exclusion.robots: 0.088
+  exclusion.robots.policy: 0.081
+  cdx.remote: 0.058
+  esindex: 0.008
+  LoadShardBlock: 58.65 (3)
+  PetaboxLoader3.datanode: 88.86 (5)
+  CDXLines.iter: 20.273 (3)
+  load_resource: 83.155
+  PetaboxLoader3.resolve: 31.575
+  loaddict: 22.887
+*/

@@ -1,0 +1,124 @@
+.product-template .product__description {
+  font-size: 1.8rem;
+}
+
+.motionTimelapse .custom__block-body-text {
+  max-width: unset !important;
+}
+
+.en-show{
+  display:block !important;
+}
+
+.en-none{
+  display:none !important;
+}
+
+/* silver image button changes */
+.landing-block-bundle-items .over-rot p{
+  font-size: 14px;
+}
+
+.landing-block-bundle-items .over-rot{
+  padding: 14px 0;
+  margin-left: 16px;
+  margin-top: -5px;
+  transform: rotate(-30deg) scale(1.5);
+  position: absolute;
+  top: 6%;
+  left: 6%;
+  background: var(--pivoTwentyTwentyBlueColor);
+  color: white;
+  border-radius: 100%;
+  width: 60px;
+  height: 60px;
+}
+
+.cart-block .move-circle-up{
+  transform: rotate(-30deg) scale(1.5);
+  margin-left: -30px !important;
+  margin-bottom: 36px;
+}
+
+
+
+@media (max-width: 489px) {
+
+  .product-container--home a .card__name{
+    font-size:2.2rem;
+  }
+
+  .product-template .product-form__quantity-selector {
+    max-width: 80px;
+  }
+
+  /* silver image button changes */
+  .landing-block-bundle-items .over-rot >p{
+    font-size: 9px;
+  }
+  .landing-block-bundle-items .over-rot{
+    margin-left: 16px;
+    margin-top: -5px;
+    padding: 10px 0;
+    transform: rotate(-30deg) scale(1.5);
+    position: absolute;
+    top: 6%;
+    left: 6%;
+    color: white;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+  }
+
+  .shop-block-textBox-subtitle .shop-block-textBox-subtitle-rotateSale,
+  .shop-block-mediaBox-productCard-imgBox .shop-block-textBox-subtitle-rotateSale {
+      margin-left: 10px !important;
+      transform: rotate(-30deg) scale(1);
+      margin-top: -9px;
+  }
+
+  .cart-block .move-circle-up{
+      transform: rotate(-30deg) scale(1.5);
+      left:0;
+      margin-left: 10px !important;
+      margin-bottom: 30px;
+      margin-top: 8px;
+      width: 40px;
+      height: 40px;
+      padding: 9px 0;
+  }
+
+  .cart-block .move-circle-up > p{
+      font-size: 10px;
+      line-height:1.1;
+  }
+
+  /* Button for cart is empty*/
+  .cart-block-no-itemsInCart .shop-block-textBox .shop-block-textBox-subtitle{
+      align-items: flex-start;
+  }
+
+
+}
+/*
+     FILE ARCHIVED ON 00:26:03 May 04, 2022 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 06:12:31 Jan 19, 2023.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 242.886
+  exclusion.robots: 0.083
+  exclusion.robots.policy: 0.075
+  cdx.remote: 0.067
+  esindex: 0.009
+  LoadShardBlock: 174.349 (3)
+  PetaboxLoader3.datanode: 205.032 (5)
+  CDXLines.iter: 22.118 (3)
+  load_resource: 92.267
+  PetaboxLoader3.resolve: 34.964
+  loaddict: 24.687
+*/

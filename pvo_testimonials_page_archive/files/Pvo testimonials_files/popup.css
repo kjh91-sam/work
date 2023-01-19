@@ -1,0 +1,25 @@
+body.popupOpened{overflow:hidden!important}.popup-cont{position:fixed;top:0;left:0;width:100vw;height:100vh;margin:0;padding:0;z-index:99;display:none}body.popupOpened .popup-cont{display:block}.popup-overlay{width:100%;height:100%;background:#E5E5E5;opacity:.9}.popup-wrapper{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100vw;height:70vh;height:fit-content;max-width:750px;max-height:650px;max-height:80vh;max-width:1068px;min-height:592px;border-radius:13px;background-color:#333232;background-repeat:no-repeat;background-size:contain;padding:20px 30px;overflow:auto}.popup-closeBtnBox{position:absolute;top:7px;right:7px;z-index:1}.popup-closeBtn{width:30px;height:30px;border-radius:100%;background-color:#fff;opacity:.5;border:2px solid #00444E}.popup-closeBtn:before,.popup-closeBtn:after{position:absolute;content:"";width:20px;height:3px;border-radius:5px;background:#00444E}.popup-closeBtn:before{transform:translate(-50%,-50%) rotate(45deg)}.popup-closeBtn:after{transform:translate(-50%,-50%) rotate(-45deg)}.display-none{display:none!important}
+/*# sourceMappingURL=/s/files/1/2065/8833/t/496/assets/popup.css.map?v=141456133386056990231652931264 */
+
+/*
+     FILE ARCHIVED ON 18:12:36 May 21, 2022 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 06:12:29 Jan 19, 2023.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 154.232
+  exclusion.robots: 0.067
+  exclusion.robots.policy: 0.061
+  cdx.remote: 0.062
+  esindex: 0.008
+  LoadShardBlock: 109.68 (3)
+  PetaboxLoader3.datanode: 148.596 (5)
+  CDXLines.iter: 17.795 (3)
+  load_resource: 131.031
+  PetaboxLoader3.resolve: 57.8
+  loaddict: 22.574
+*/

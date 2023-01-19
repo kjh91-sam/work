@@ -1,0 +1,25 @@
+@charset "UTF-8";html{font-family:SofiaProSoftRegular,sans-serif;font-size:62.5%;--globalNavHeight: 70px;--NglobalNavHeight: -70px}body{color:#1d1d1f;letter-spacing:0em}.icon-pivo-logo-dark{width:102px}.icon-cart_icon{width:32px;height:32px;background-image:url(https://web.archive.org/web/20220504002613im_/https://cdn.shopify.com/s/files/1/2065/8833/files/icons.svg?46255);background-position:0 -96px;background-repeat:no-repeat;opacity:.6;transform:scale(.8)}.icon-cart_badge{position:absolute;font-size:1rem;color:#fff!important;background-color:#ec2544;padding:.5px 5px;border-radius:47%;left:57%;bottom:57%}.onlyDisplayDesktop{display:none}p{line-height:1.6}a{text-decoration:none}body.before-load{overflow:hidden}.container{overflow-x:hidden}.global-nav{position:absolute;top:0;left:0;z-index:10;width:100%;height:var(--globalNavHeight);padding:0 1rem;box-shadow:0 0 4px 1px #000000b3;background:#0c9bd3}.global-nav:after{content:"";width:100%;height:100px;position:absolute;bottom:-100px;left:0}.local-nav-sticky .global-nav{position:fixed;top:0}.global-nav-links{display:flex;justify-content:space-between;align-items:center;max-width:1200px;max-width:90%;height:100%;margin:0 auto}.global-nav-links-right{display:flex;align-items:center}.buyNow_btn{position:relative;background-color:#ec2544;color:#fff;font-weight:700;text-align:center;line-height:2;cursor:pointer;outline:0;box-sizing:border-box;margin:0 12px;white-space:nowrap;border-radius:60px;border:none;padding:5px 20px;font-size:1.4rem}.onlyDisplayDesktop .global-nav-item{margin-right:24px;color:#4a4a4a;letter-spacing:.5px;font-size:1.8rem;white-space:nowrap}.scroll-section{position:relative;padding-top:50vh;z-index:6}#scroll-section-0{color:#fff;overflow:hidden}#scroll-section-0 .a{font-family:CarosSoftExtraBold;letter-spacing:0px;position:absolute;width:100%;top:4%}#scroll-section-0 .a span{font-size:1.6em}#scroll-section-0 .b{position:absolute;bottom:4%;width:100%}#scroll-section-0 .c{position:absolute;font-family:CarosSoftExtraBold;font-weight:700;z-index:1;right:50%;top:62%}.main-message{opacity:0;font-size:3vh}.main-message.a,.main-message.b{opacity:1}.main-message-a-up,.main-message-a-down,.main-message-b-up,.main-message-b-down{opacity:0;white-space:nowrap}.main-message-b-up{max-width:9rem;max-width:4em}.main-message-b-down-origin-price{font-size:2.4rem;font-size:.9em;text-decoration:line-through}.main-message p{text-align:center;line-height:1.2}.svgAnimationLetter2{margin:0 auto;opacity:0;transform-origin:center}#show-scene-0 .sticky-elem{position:fixed;top:0;left:0;width:100%;height:100vh;display:block;will-change:transform,opacity;background:#0ca4d3}.sticky-elem-frame{margin-top:var(--globalNavHeight);margin-bottom:var(--globalNavHeight);height:calc(100vh - 2 * var(--globalNavHeight));position:relative}.frame-box{width:100%;height:100%;position:absolute;top:0;left:0}.sticky-elem canvas{position:absolute;top:50%;left:50%;width:auto;max-height:100%}#image-canvas{opacity:0}.diplayFlexCentered{display:flex;flex-direction:column;align-items:center}.podLetterBox,.videoContainer2{width:100%;height:100vh}.frame-box.videoContainer2{opacity:0;top:var(--NglobalNavHeight)}.frame-box.podLetterBox{top:var(--NglobalNavHeight)}.videoContainer video,.videoContainer2 video{width:100%;height:100%;object-fit:cover}.videoContainer2 video{position:absolute;top:0;left:0}.zIndex5{z-index:5!important}.video{width:100%;height:100%}@media (min-width: 1024px){#scroll-section-0 .c{top:64%}}@media (min-width: 749px){.onlyDisplayDesktop{display:block}.onlyDisplayDesktop-left{display:flex;height:100%}}
+/*# sourceMappingURL=/s/files/1/2065/8833/t/496/assets/newLandingPageOpacityFadeSize.css.map?v=95225921551062822291643172928 */
+
+/*
+     FILE ARCHIVED ON 00:26:13 May 04, 2022 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 06:12:29 Jan 19, 2023.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 155.612
+  exclusion.robots: 0.074
+  exclusion.robots.policy: 0.067
+  RedisCDXSource: 0.618
+  esindex: 0.008
+  LoadShardBlock: 133.578 (3)
+  PetaboxLoader3.datanode: 155.894 (5)
+  CDXLines.iter: 18.558 (3)
+  load_resource: 87.476
+  PetaboxLoader3.resolve: 32.565
+  loaddict: 13.902
+*/
